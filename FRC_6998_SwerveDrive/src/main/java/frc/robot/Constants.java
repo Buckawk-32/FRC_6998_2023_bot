@@ -72,6 +72,8 @@ public final class Constants {public final static Rotation2d SWERVE_LEFTFRONT_OF
   public static final double SWERVE_AUTO_Z_KP = 0.0;
   public static final double SWERVE_AUTO_Z_KI = 0.0;
   public static final double SWERVE_AUTO_Z_KD = 0.0;
+
+  public static final double INTAKE_MOTOR_RPM = 0;
 }
   
 

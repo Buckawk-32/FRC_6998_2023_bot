@@ -5,6 +5,8 @@
 package frc.robot;
 
 import frc.robot.commands.SwerveDriveCommand;
+import frc.robot.subsystems.IntakeMotor;
+import frc.robot.subsystems.IntakePivot;
 import frc.robot.subsystems.SwerveSubsystem;
 
 import java.util.HashMap;
@@ -33,8 +35,10 @@ public class RobotContainer {
 
     private final static XboxController controller_driveX = new XboxController(0);
 
+    private final static XboxController controller_operatorX = new XboxController(1);
+
     List<PathPlannerTrajectory> pathGroup = 
-      PathPlanner.loadPathGroup("New Path", new PathConstraints(0, 0));
+      PathPlanner.loadPathGroup("New New Path", new PathConstraints(4, 3));
     
     HashMap<String, Command> eventMap = new HashMap<>();
 
@@ -55,7 +59,7 @@ public class RobotContainer {
     public RobotContainer()
     {
       swerveSubsystem.setDefaultCommand(new SwerveDriveCommand(
-        swerveSubsystem, 
+        swerveSubsystem,
         () -> controller_driveX.getRawAxis(XboxController.Axis.kLeftY.value),
         () -> controller_driveX.getRawAxis(XboxController.Axis.kLeftX.value),
         () -> controller_driveX.getRawAxis(XboxController.Axis.kRightX.value),
@@ -63,6 +67,16 @@ public class RobotContainer {
         ));
 
         configureBindings();
+
+        if (controller_operatorX.getLeftBumperPressed()) {
+          IntakePivot.extendIntake();
+        } else if (controller_operatorX.getLeftBumperReleased()) {
+          IntakePivot.retractIntake();
+        } else if (IntakePivot.isIntakeExtended_PIVOT1() && IntakePivot.isIntakeExtended_PIVOT2() == true) {
+          IntakeMotor.IntakeSpeed_Motor(Constants.INTAKE_MOTOR_RPM);
+        } else if (IntakePivot.isIntakeRetracted_PIVOT1() && IntakePivot.isIntakeRetracted_PIVOT2() == true) {
+          IntakeMotor.IntakeSpeed_Motor(0);
+        }
     }
 
     private void configureBindings() {

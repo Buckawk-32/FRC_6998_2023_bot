@@ -18,4 +18,10 @@ public class Robotmap {
     public static final int SWERVE_RIGHTREAR_DRIVEMOTOR = 5;
     public static final int SWERVE_RIGHTREAR_ANGLEMOTOR = 6;
     public static final int SWERVE_RIGHTREAR_CANCODER = 3;
+
+    public static final int INTAKE_PIVOT_1_ENGAGE = 0;
+    public static final int INTAKE_PIVOT_1_DISENGAGE = 1;
+    public static final int INTAKE_PIVOT_2_ENGAGE = 2;
+    public static final int INTAKE_PIVOT_2_DISENGAGE = 3;
+    public static final int INTAKE_MOTOR = 9;
 }
