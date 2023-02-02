@@ -24,4 +24,10 @@ public class Robotmap {
     public static final int INTAKE_PIVOT_2_ENGAGE = 2;
     public static final int INTAKE_PIVOT_2_DISENGAGE = 3;
     public static final int INTAKE_MOTOR = 9;
+
+    public static final int TRANSFER_BELT_MOTOR_1 = 10;
+    public static final int TRANSFER_BELT_MOTOR_2 = 11;
+    public static final int TRANSFER_ELE_ENGAGE = 4;
+    public static final int TRANSFER_ELE_DISENGAGE = 5;
+
 }

@@ -8,6 +8,8 @@ import frc.robot.commands.SwerveDriveCommand;
 import frc.robot.subsystems.IntakeMotor;
 import frc.robot.subsystems.IntakePivot;
 import frc.robot.subsystems.SwerveSubsystem;
+import frc.robot.subsystems.TransferBelt;
+import frc.robot.subsystems.TransferElevator;
 
 import java.util.HashMap;
 import java.util.List;
@@ -76,6 +78,22 @@ public class RobotContainer {
           IntakeMotor.IntakeSpeed_Motor(Constants.INTAKE_MOTOR_RPM);
         } else if (IntakePivot.isIntakeRetracted_PIVOT1() && IntakePivot.isIntakeRetracted_PIVOT2() == true) {
           IntakeMotor.IntakeSpeed_Motor(0);
+        }
+
+        if (controller_operatorX.getRightBumperPressed()) {
+          TransferBelt.TransferBelt_SetMotor();
+        } else if (controller_operatorX.getRightBumperReleased()) {
+          TransferBelt.TransferBelt_SetMotor_0();
+        }
+
+        if (TransferBelt.isTransferBelt_NOTrunning_1() == true) {
+          TransferBelt.TRANSFER_BELT_MOTOR_2.set(0);
+        }
+
+        if (controller_operatorX.getXButtonPressed()) {
+          TransferElevator.extendEle();
+        } else if (controller_operatorX.getXButtonReleased()) {
+          TransferElevator.retractEle();
         }
     }
 
