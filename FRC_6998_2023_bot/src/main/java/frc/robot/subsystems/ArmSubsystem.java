@@ -41,18 +41,7 @@ public class ArmSubsystem extends SubsystemBase {
         return ArmMotors_instance;
     }
 
-    public static void driveArm_Teleop(XboxController xController) {
-        double leftY = -xController.getLeftY();
-        double rightY = -xController.getRightY();
-
-        if (leftY < 0.05 && leftY > -0.05) leftY = 0;
-        if (rightY < 0.05 && rightY > -0.05) rightY = 0;
-
     
-
-        
-    }
-
 
 
 }
