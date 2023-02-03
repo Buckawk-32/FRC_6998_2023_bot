@@ -77,6 +77,14 @@ public final class Constants {public final static Rotation2d SWERVE_LEFTFRONT_OF
 
   public static final double TRANSFER_MOTOR1_RPM = 0;
   public static final double TRANSFER_MOTOR2_RPM = 0;
+
+  public static final double ARM_JOINT_1_KP = 0;
+  public static final double ARM_JOINT_1_KI = 0;
+  public static final double ARM_JOINT_1_KD = 0;
+
+  public static final double ARM_JOINT_2_KP = 0;
+  public static final double ARM_JOINT_2_KI = 0;
+  public static final double ARM_JOINT_2_KD = 0;
 }
   
 
