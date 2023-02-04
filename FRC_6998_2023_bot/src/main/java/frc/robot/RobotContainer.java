@@ -98,7 +98,7 @@ public class RobotContainer {
     }
 
     private void configureBindings() {
-      new JoystickButton(controller_driveX, XboxController.Button.kRightBumper.value)
+      new JoystickButton(controller_driveX, XboxController.Button.kStart.value)
         .onTrue(new InstantCommand(swerveSubsystem::zeroGyro));
     }
 

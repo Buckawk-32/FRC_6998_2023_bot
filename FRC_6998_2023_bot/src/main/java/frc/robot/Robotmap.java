@@ -31,6 +31,8 @@ public class Robotmap {
     public static final int TRANSFER_ELE_ENGAGE = 4;
     public static final int TRANSFER_ELE_DISENGAGE = 5;
 
-    public static final int ARM_JOINT_MOTOR_1 = 13;
-    public static final int ARM_JOINT_MOTOR_2 = 14;
+    public static final int TRANSFER_UPRIGHT_MOTOR = 13;
+
+    public static final int ARM_JOINT_MOTOR_1 = 14;
+    public static final int ARM_JOINT_MOTOR_2 = 15;
 }
