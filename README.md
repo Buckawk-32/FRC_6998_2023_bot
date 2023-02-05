@@ -7,6 +7,9 @@ This is the Generation 1 code for the Gen 1 robot. This is still a early prototy
 ## The Current Goal
 Finish the Arm subsystem and the Transfer Subsytem, once that is done, we need to test it with operator and driver controls.
 
+## Date
+Gen 1 finish by 2/6
+
 ## Contributions
 Thanks to a lot of google and github (team 326, 138, 2168), WPI documentation, Limelight documentation, and the seniors in our team.
 
