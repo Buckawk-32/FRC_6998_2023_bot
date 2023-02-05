@@ -5,6 +5,7 @@
 package frc.robot;
 
 import frc.robot.commands.SwerveDriveCommand;
+import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.IntakeMotor;
 import frc.robot.subsystems.IntakePivot;
 import frc.robot.subsystems.SwerveSubsystem;
@@ -39,6 +40,9 @@ public class RobotContainer {
 
     private final static XboxController controller_operatorX = new XboxController(1);
 
+    public static double LeftY = controller_operatorX.getLeftY();
+    public static double RightY = controller_operatorX.getRightY();
+
     List<PathPlannerTrajectory> pathGroup = 
       PathPlanner.loadPathGroup("New New Path", new PathConstraints(4, 3));
     
@@ -65,7 +69,7 @@ public class RobotContainer {
         () -> controller_driveX.getRawAxis(XboxController.Axis.kLeftY.value),
         () -> controller_driveX.getRawAxis(XboxController.Axis.kLeftX.value),
         () -> controller_driveX.getRawAxis(XboxController.Axis.kRightX.value),
-        () -> controller_driveX.getBackButton()
+        () -> controller_driveX.getStartButton()
         ));
 
         configureBindings();
@@ -94,6 +98,12 @@ public class RobotContainer {
           TransferElevator.extendEle();
         } else if (controller_operatorX.getXButtonReleased()) {
           TransferElevator.retractEle();
+        }
+
+        if (LeftY == LeftY) {
+          ArmSubsystem.Drive_Arm_Motor_1();
+        } else if (RightY == RightY) {
+          ArmSubsystem.Drive_Arm_Motor_2();
         }
     }
 

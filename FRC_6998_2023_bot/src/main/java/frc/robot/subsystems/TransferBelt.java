@@ -9,38 +9,38 @@ import frc.robot.Robotmap;
 
 public class TransferBelt extends SubsystemBase {
     
-    public static CANSparkMax TRANSFER_BELT_MOTOR_1;
-    public static CANSparkMax TRANSFER_BELT_MOTOR_2;
+    public static CANSparkMax   TRANSFER_BELT_MOTOR_FRONT;
+    public static CANSparkMax TRANSFER_BELT_MOTOR_BACK;
 
     private TransferBelt() {
-        TRANSFER_BELT_MOTOR_1 = new CANSparkMax(Robotmap.TRANSFER_BELT_MOTOR_1, MotorType.kBrushless);
-        TRANSFER_BELT_MOTOR_2 = new CANSparkMax(Robotmap.TRANSFER_BELT_MOTOR_2, MotorType.kBrushless);
+        TRANSFER_BELT_MOTOR_FRONT = new CANSparkMax(Robotmap.TRANSFER_BELT_MOTOR_FRONT, MotorType.kBrushless);
+        TRANSFER_BELT_MOTOR_BACK = new CANSparkMax(Robotmap.TRANSFER_BELT_MOTOR_BACK, MotorType.kBrushless);
+
+    
     }
 
     public static void TransferBelt_SetMotor() {
-        TRANSFER_BELT_MOTOR_1.set(Constants.TRANSFER_MOTOR1_RPM);
-        TRANSFER_BELT_MOTOR_2.set(Constants.TRANSFER_MOTOR2_RPM);
     }
 
     public static void TransferBelt_SetMotor_0() {
-        TRANSFER_BELT_MOTOR_1.set(0);
-        TRANSFER_BELT_MOTOR_2.set(0);
+        TRANSFER_BELT_MOTOR_FRONT.set(0);
+        TRANSFER_BELT_MOTOR_BACK.set(0);
     }
 
     public static boolean isTransferBelt_running_1() {
-        return TRANSFER_BELT_MOTOR_1.get() == Constants.TRANSFER_MOTOR1_RPM;
+        return  TRANSFER_BELT_MOTOR_FRONT.get() == Constants.TRANSFER_MOTOR1_RPM;
     }
 
     public static boolean isTransferBelt_running_2() {
-        return TRANSFER_BELT_MOTOR_2.get() == Constants.TRANSFER_MOTOR2_RPM;
+        return TRANSFER_BELT_MOTOR_BACK.get() == Constants.TRANSFER_MOTOR2_RPM;
     }
 
     public static boolean isTransferBelt_NOTrunning_1() {
-        return TRANSFER_BELT_MOTOR_1.get() == 0;
+        return  TRANSFER_BELT_MOTOR_FRONT.get() == 0;
     }
 
     public static boolean isTransferBelt_NOTrunning_2() {
-        return TRANSFER_BELT_MOTOR_2.get() == 0;
+        return TRANSFER_BELT_MOTOR_BACK.get() == 0;
     }
 
     
