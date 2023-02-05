@@ -11,8 +11,8 @@ public class IntakePivot extends SubsystemBase{
     private static IntakePivot IntakePivot_instance = null;
 
     private IntakePivot() {
-        INTAKE_PIVOT_1 = new DoubleSolenoid(null, Robotmap.INTAKE_PIVOT_1_ENGAGE, Robotmap.INTAKE_PIVOT_1_DISENGAGE);
-        INTAKE_PIVOT_2 = new DoubleSolenoid(null, Robotmap.INTAKE_PIVOT_2_ENGAGE, Robotmap.INTAKE_PIVOT_2_DISENGAGE);
+        INTAKE_PIVOT_1 = new DoubleSolenoid(Robotmap.PNEUMATICS_MODULE_TYPE, Robotmap.INTAKE_PIVOT_1_ENGAGE, Robotmap.INTAKE_PIVOT_1_DISENGAGE);
+        INTAKE_PIVOT_2 = new DoubleSolenoid(Robotmap.PNEUMATICS_MODULE_TYPE, Robotmap.INTAKE_PIVOT_2_ENGAGE, Robotmap.INTAKE_PIVOT_2_DISENGAGE);
     }
 
     public static IntakePivot getInstance() {

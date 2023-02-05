@@ -84,16 +84,6 @@ public class RobotContainer {
           IntakeMotor.IntakeSpeed_Motor(0);
         }
 
-        if (controller_operatorX.getRightBumperPressed()) {
-          TransferBelt.TransferBelt_SetMotor();
-        } else if (controller_operatorX.getRightBumperReleased()) {
-          TransferBelt.TransferBelt_SetMotor_0();
-        }
-
-        if (TransferBelt.isTransferBelt_NOTrunning_1() == true) {
-          TransferBelt.TRANSFER_BELT_MOTOR_2.set(0);
-        }
-
         if (controller_operatorX.getXButtonPressed()) {
           TransferElevator.extendEle();
         } else if (controller_operatorX.getXButtonReleased()) {

@@ -1,7 +1,10 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
+
 public class Robotmap {
     public static final String SWERVE_CANBUS_TYPE = "rio";
+    public static final PneumaticsModuleType PNEUMATICS_MODULE_TYPE = PneumaticsModuleType.REVPH;
 
     public static final int SWERVE_LEFTFRONT_DRIVEMOTOR = 1;
     public static final int SWERVE_LEFTFRONT_ANGLEMOTOR = 2;

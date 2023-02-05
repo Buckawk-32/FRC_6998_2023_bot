@@ -14,7 +14,6 @@ public class TransferUpright extends SubsystemBase {
 // I also need to figure out the conversion factor for the encoder
 
     public static CANSparkMax TRANSFER_UPRIGHT_MOTOR;
-    public boolean TRANSFER_UPRIGHT_MOTOR_REVERSE = false;
     public static DutyCycleEncoder TRANSFER_UPRIGHT_ENCODER;
 
     public TransferUpright() {
@@ -44,16 +43,17 @@ public class TransferUpright extends SubsystemBase {
     }
 
 // I need to fix the drive, so that the peice can move forth with 25 rotations, and back with 25 rotations
+// I need to ask questions to the seniors
 
-    public static void Transfer_Motor_drive_for() {
-        TRANSFER_UPRIGHT_MOTOR.getPIDController().setReference(1, ControlType.kSmartMotion);
+    public static void Transfer_Upright_drive_for() {
+        TRANSFER_UPRIGHT_MOTOR.getPIDController().setReference();
     }
 
-    public static void Transfer_Motor_drive_rev() {
-        TRANSFER_UPRIGHT_MOTOR.getPIDController().setReference(-1, ControlType.kSmartMotion);
+    public static void Transfer_Upright_drive_rev() {
+        TRANSFER_UPRIGHT_MOTOR.getPIDController().setReference();
     }
 
-    public static void Transfer_Motor_stop() {
+    public static void Transfer_Upright_stop() {
         TRANSFER_UPRIGHT_MOTOR.set(0);
     }
 

@@ -9,7 +9,7 @@ public class TransferElevator extends SubsystemBase {
     public static DoubleSolenoid TRANSFER_ELE;
     
     private TransferElevator() {
-        TRANSFER_ELE = new DoubleSolenoid(null, Robotmap.TRANSFER_ELE_ENGAGE, Robotmap.TRANSFER_ELE_DISENGAGE);
+        TRANSFER_ELE = new DoubleSolenoid(Robotmap.PNEUMATICS_MODULE_TYPE, Robotmap.TRANSFER_ELE_ENGAGE, Robotmap.TRANSFER_ELE_DISENGAGE);
     }
 
     public static void extendEle() {
