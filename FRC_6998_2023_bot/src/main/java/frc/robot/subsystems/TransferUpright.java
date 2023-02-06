@@ -1,10 +1,14 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMax.ControlType;
+import com.revrobotics.ColorMatch;
+import com.revrobotics.ColorMatchResult;
+import com.revrobotics.ColorSensorV3;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
+import edu.wpi.first.wpilibj.I2C.Port;
+import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.Robotmap;
@@ -15,9 +19,19 @@ public class TransferUpright extends SubsystemBase {
 
     public static CANSparkMax TRANSFER_UPRIGHT_MOTOR;
     public static DutyCycleEncoder TRANSFER_UPRIGHT_ENCODER;
-
+    
+    public static ColorSensorV3 TRANSFER_UPRIGHT_SENSOR;
+    public static final ColorMatch MATCH_YELLOW_CONE = new ColorMatch();
+    public static final Color DETECT_YELLOW_CONE = TRANSFER_UPRIGHT_SENSOR.getColor();
+    public static final Color YELLOW_CONE = new Color(0.361, 0.524, 0.113);
+    public static final ColorMatchResult COLOR_YELLOW_CONE = MATCH_YELLOW_CONE.matchClosestColor(DETECT_YELLOW_CONE);
+    
     public TransferUpright() {
         TRANSFER_UPRIGHT_MOTOR = new CANSparkMax(Robotmap.TRANSFER_UPRIGHT_MOTOR, MotorType.kBrushless);
+        TRANSFER_UPRIGHT_ENCODER = (DutyCycleEncoder) TRANSFER_UPRIGHT_MOTOR.getEncoder();
+        TRANSFER_UPRIGHT_SENSOR = new ColorSensorV3(Port.kMXP);
+
+        MATCH_YELLOW_CONE.addColorMatch(YELLOW_CONE);
 
         TRANSFER_UPRIGHT_MOTOR.restoreFactoryDefaults();
 
@@ -31,7 +45,7 @@ public class TransferUpright extends SubsystemBase {
         TRANSFER_UPRIGHT_MOTOR.getPIDController().setFF(Constants.TRANSFER_UPRIGHT_MOTOR_KF);
         TRANSFER_UPRIGHT_MOTOR.getEncoder().setPositionConversionFactor(1/100);
     }
-    
+
     private static TransferUpright TransferM_Upright_Instance = null;
 
     public static TransferUpright TransferM_Upright_getInstance() {
@@ -42,15 +56,8 @@ public class TransferUpright extends SubsystemBase {
         return TransferM_Upright_Instance;
     }
 
-// I need to fix the drive, so that the peice can move forth with 25 rotations, and back with 25 rotations
-// I need to ask questions to the seniors
-
-    public static void Transfer_Upright_drive_for() {
-        TRANSFER_UPRIGHT_MOTOR.getPIDController().setReference();
-    }
-
-    public static void Transfer_Upright_drive_rev() {
-        TRANSFER_UPRIGHT_MOTOR.getPIDController().setReference();
+    public static void Transfer_Upright_drive() {
+        TRANSFER_UPRIGHT_ENCODER.
     }
 
     public static void Transfer_Upright_stop() {

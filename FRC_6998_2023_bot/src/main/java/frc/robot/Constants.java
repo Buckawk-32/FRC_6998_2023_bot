@@ -5,7 +5,6 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
@@ -119,6 +118,12 @@ public final class Constants {public final static Rotation2d SWERVE_LEFTFRONT_OF
 
 // --------------------------------------------------------------------
 
+  public static final double TRANSFER_SENSOR_RESO = 0;
+  public static final double TRANSFER_SENSOR_RATE = 0;
+  public static final double TRANSFER_SENSOR_GAIN = 0;
+
+// --------------------------------------------------------------------
+
   public static final boolean TRANSFER_UPRIGHT_MOTOR_INVERTED = false;
  
   public static final double TRANSFER_UPRIGHT_MOTOR_KP = 0.75;
@@ -134,10 +139,12 @@ public final class Constants {public final static Rotation2d SWERVE_LEFTFRONT_OF
   public static final double ARM_JOINT_1_KP = 0;
   public static final double ARM_JOINT_1_KI = 0;
   public static final double ARM_JOINT_1_KD = 0;
+  public static final double ARM_JOINT_1_KF = 0;
 
   public static final double ARM_JOINT_2_KP = 0;
   public static final double ARM_JOINT_2_KI = 0;
   public static final double ARM_JOINT_2_KD = 0;
+  public static final double ARM_JOINT_2_KF = 0;
 
   public static final double ARM_JOINT_1_KS = 0;
   public static final double ARM_JOINT_1_KG = 0;
@@ -156,8 +163,8 @@ public final class Constants {public final static Rotation2d SWERVE_LEFTFRONT_OF
   public static final double ARM_JOINT_2_POSRADIANS_SETPOINT = 0;
   public static final double ARM_JOINT_2_VELRADIANS_PERSEC_SETPOINT = 0;
   public static final double ARM_JOINT_2_ACCEL_PERSEC_SQUARED_SETPOINT = 0;
-  public static final double ARM_JOINT_1_SPEED_CONSTANT = 0;
-  public static final double ARM_JOINT_2_SPEED_CONSTANT = 0;
+  public static final double ARM_JOINT_1_RPM = 0;
+  public static final double ARM_JOINT_2_RPM = 0;
 
 // --------------------------------------------------------------------
 }

@@ -5,6 +5,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.SparkMaxAbsoluteEncoder.Type;
 
 import edu.wpi.first.math.controller.ArmFeedforward;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -25,6 +26,9 @@ public class ArmSubsystem extends SubsystemBase {
     public ArmSubsystem() {
         ARM_JOINT_MOTOR_1 = new CANSparkMax(Robotmap.ARM_JOINT_MOTOR_1, MotorType.kBrushless);
         ARM_JOINT_MOTOR_2 = new CANSparkMax(Robotmap.ARM_JOINT_MOTOR_2, MotorType.kBrushless);
+
+        ARM_JOINT_ENCODER_1 = ARM_JOINT_MOTOR_1.getAbsoluteEncoder(Type.kDutyCycle);
+        ARM_JOINT_ENCODER_2 = ARM_JOINT_MOTOR_2.getAbsoluteEncoder(Type.kDutyCycle);
 
         ARM_JOINT_MOTOR_1.restoreFactoryDefaults();
         ARM_JOINT_MOTOR_2.restoreFactoryDefaults();
@@ -54,11 +58,11 @@ public class ArmSubsystem extends SubsystemBase {
     }
 
     public static void Drive_Arm_Motor_1() {
-        ARM_JOINT_MOTOR_1.getPIDController().setReference(Constants.ARM_JOINT_1_SPEED_CONSTANT, ControlType.kSmartMotion, 0, ARM_JOINT_1_FF.calculate(Constants.ARM_JOINT_1_POSRADIANS_SETPOINT, Constants.ARM_JOINT_1_VELRADIANS_PERSEC_SETPOINT, Constants.ARM_JOINT_1_ACCEL_PERSEC_SQUARED_SETPOINT));
+        ARM_JOINT_MOTOR_1.getPIDController().setReference(Constants.ARM_JOINT_1_RPM, ControlType.kSmartMotion, 0, ARM_JOINT_1_FF.calculate(Constants.ARM_JOINT_1_POSRADIANS_SETPOINT, Constants.ARM_JOINT_1_VELRADIANS_PERSEC_SETPOINT, Constants.ARM_JOINT_1_ACCEL_PERSEC_SQUARED_SETPOINT));
     }
 
     public static void Drive_Arm_Motor_2() {
-        ARM_JOINT_MOTOR_2.getPIDController().setReference(Constants.ARM_JOINT_2_SPEED_CONSTANT, ControlType.kSmartMotion, 0, ARM_JOINT_2_FF.calculate(Constants.ARM_JOINT_2_POSRADIANS_SETPOINT, Constants.ARM_JOINT_2_VELRADIANS_PERSEC_SETPOINT, Constants.ARM_JOINT_2_ACCEL_PERSEC_SQUARED_SETPOINT));;
+        ARM_JOINT_MOTOR_2.getPIDController().setReference(Constants.ARM_JOINT_2_RPM, ControlType.kSmartMotion, 0, ARM_JOINT_2_FF.calculate(Constants.ARM_JOINT_2_POSRADIANS_SETPOINT, Constants.ARM_JOINT_2_VELRADIANS_PERSEC_SETPOINT, Constants.ARM_JOINT_2_ACCEL_PERSEC_SQUARED_SETPOINT));
     }
 
     public static void Stop_Arm_Motor_1() {
