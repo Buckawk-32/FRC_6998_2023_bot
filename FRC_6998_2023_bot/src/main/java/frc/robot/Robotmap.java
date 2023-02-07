@@ -38,4 +38,6 @@ public class Robotmap {
 
     public static final int ARM_JOINT_MOTOR_1 = 14;
     public static final int ARM_JOINT_MOTOR_2 = 15;
+    public static final int ARM_GRIPPER_ENGAGE = 6;
+    public static final int ARM_GRIPPER_DISENGAGE = 7;
 }

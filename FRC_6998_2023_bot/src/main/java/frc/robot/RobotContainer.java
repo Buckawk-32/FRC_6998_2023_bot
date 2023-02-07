@@ -5,6 +5,7 @@
 package frc.robot;
 
 import frc.robot.commands.SwerveDriveCommand;
+import frc.robot.subsystems.ArmGripper;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.IntakeMotor;
 import frc.robot.subsystems.IntakePivot;
@@ -93,6 +94,15 @@ public class RobotContainer {
           ArmSubsystem.Drive_Arm_Motor_1();
         } else if (RightY == RightY) {
           ArmSubsystem.Drive_Arm_Motor_2();
+        }
+
+        if (controller_operatorX.getAButtonPressed()) {
+          ArmGripper.ArmGripper_Extend();
+        } else if (controller_operatorX.getAButtonReleased()) {
+          ArmGripper.ArmGripper_Retract();
+        } else if (ArmGripper.isArmGripper_Extended()) {
+          ArmSubsystem.Stop_Arm_Motor_1();
+          ArmSubsystem.Stop_Arm_Motor_2();
         }
     }
 

@@ -15,7 +15,7 @@ public class IntakePivot extends SubsystemBase{
         INTAKE_PIVOT_2 = new DoubleSolenoid(Robotmap.PNEUMATICS_MODULE_TYPE, Robotmap.INTAKE_PIVOT_2_ENGAGE, Robotmap.INTAKE_PIVOT_2_DISENGAGE);
     }
 
-    public static IntakePivot getInstance() {
+    public static IntakePivot Intake_getInstance() {
         if (IntakePivot_instance == null)
         {
             IntakePivot_instance = new IntakePivot();

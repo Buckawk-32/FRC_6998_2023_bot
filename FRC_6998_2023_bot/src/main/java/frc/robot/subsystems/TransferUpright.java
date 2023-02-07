@@ -4,6 +4,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.ColorMatch;
 import com.revrobotics.ColorMatchResult;
 import com.revrobotics.ColorSensorV3;
+import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
@@ -14,8 +15,6 @@ import frc.robot.Constants;
 import frc.robot.Robotmap;
 
 public class TransferUpright extends SubsystemBase {
-
-// I also need to figure out the conversion factor for the encoder
 
     public static CANSparkMax TRANSFER_UPRIGHT_MOTOR;
     public static DutyCycleEncoder TRANSFER_UPRIGHT_ENCODER;
@@ -57,7 +56,11 @@ public class TransferUpright extends SubsystemBase {
     }
 
     public static void Transfer_Upright_drive() {
-        TRANSFER_UPRIGHT_ENCODER.
+        TRANSFER_UPRIGHT_MOTOR.getPIDController().setReference(0, ControlType.kPosition);
+    }
+
+    public static void Transfer_Upright_drive_Back() {
+        TRANSFER_UPRIGHT_MOTOR.getPIDController().setReference(25, ControlType.kPosition);
     }
 
     public static void Transfer_Upright_stop() {
