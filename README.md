@@ -1,16 +1,20 @@
 # FRC_6998_2023_bot
  FRC_6998, Season 2023 robot
 
-## Generation No.1
-This is the Generation 1 code for the Gen 1 robot. This is still a early prototype code. Each week should have a new generation of code.
+## Generation No.1, Insights
+The one thing that is the most biggest change is about the arm. We are taking out the arm for an elevator for the mock competition we have.
+
+## Generation No.2
+Gen 2 consists of and integrated claw and intkae attached on to the elevator on a swerve drive chassis
 
 ## The Current Goal
-Now that Gen 1 code is done, I need to test the vaules (PID, FF, etc) and do more testing for can conclusion on Gen 2.
+Finish Gen 2
 
 ## Objectives
-Finish testing by 2/9
+Finish code by 2/16
+Finished testing by 2/17
 
 ## Contributions
-Thanks to a lot of google and github (team 326, 138, 2168), WPI documentation, Limelight documentation, and the seniors in our team.
+Thanks to a lot of google and github (team 364, 138, 2168), WPI documentation, and the seniors in our team.
 
   
