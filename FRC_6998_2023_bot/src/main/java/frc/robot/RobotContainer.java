@@ -5,13 +5,7 @@
 package frc.robot;
 
 import frc.robot.commands.SwerveDriveCommand;
-import frc.robot.subsystems.ArmGripper;
-import frc.robot.subsystems.ArmSubsystem;
-import frc.robot.subsystems.IntakeMotor;
-import frc.robot.subsystems.IntakePivot;
 import frc.robot.subsystems.SwerveSubsystem;
-import frc.robot.subsystems.TransferElevator;
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -73,37 +67,6 @@ public class RobotContainer {
         ));
 
         configureBindings();
-
-        if (controller_operatorX.getLeftBumperPressed()) {
-          IntakePivot.extendIntake();
-        } else if (controller_operatorX.getLeftBumperReleased()) {
-          IntakePivot.retractIntake();
-        } else if (IntakePivot.isIntakeExtended_PIVOT1() && IntakePivot.isIntakeExtended_PIVOT2() == true) {
-          IntakeMotor.IntakeSpeed_Motor(Constants.INTAKE_MOTOR_RPM);
-        } else if (IntakePivot.isIntakeRetracted_PIVOT1() && IntakePivot.isIntakeRetracted_PIVOT2() == true) {
-          IntakeMotor.IntakeSpeed_Motor(0);
-        }
-
-        if (controller_operatorX.getXButtonPressed()) {
-          TransferElevator.extendEle();
-        } else if (controller_operatorX.getXButtonReleased()) {
-          TransferElevator.retractEle();
-        }
-
-        if (LeftY == LeftY) {
-          ArmSubsystem.Drive_Arm_Motor_1();
-        } else if (RightY == RightY) {
-          ArmSubsystem.Drive_Arm_Motor_2();
-        }
-
-        if (controller_operatorX.getAButtonPressed()) {
-          ArmGripper.ArmGripper_Extend();
-        } else if (controller_operatorX.getAButtonReleased()) {
-          ArmGripper.ArmGripper_Retract();
-        } else if (ArmGripper.isArmGripper_Extended()) {
-          ArmSubsystem.Stop_Arm_Motor_1();
-          ArmSubsystem.Stop_Arm_Motor_2();
-        }
     }
 
     private void configureBindings() {

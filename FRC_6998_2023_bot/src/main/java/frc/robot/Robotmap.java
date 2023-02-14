@@ -22,22 +22,15 @@ public class Robotmap {
     public static final int SWERVE_RIGHTREAR_ANGLEMOTOR = 6;
     public static final int SWERVE_RIGHTREAR_CANCODER = 3;
 
-    public static final int INTAKE_PIVOT_1_ENGAGE = 0;
-    public static final int INTAKE_PIVOT_1_DISENGAGE = 1;
-    public static final int INTAKE_PIVOT_2_ENGAGE = 2;
-    public static final int INTAKE_PIVOT_2_DISENGAGE = 3;
-    public static final int INTAKE_MOTOR_RIGHT = 9;
-    public static final int INTAKE_MOTOR_LEFT = 10;
+// need to change the ids below
 
-    public static final int TRANSFER_BELT_MOTOR_FRONT = 11;
-    public static final int TRANSFER_BELT_MOTOR_BACK = 12;
-    public static final int TRANSFER_ELE_ENGAGE = 4;
-    public static final int TRANSFER_ELE_DISENGAGE = 5;
+    public static final int MOTOR_INTAKE_CONE_ID = 0;
+    public static final int MOTOR_INTAKE_BOX_ID = 0;
 
-    public static final int TRANSFER_UPRIGHT_MOTOR = 13;
+    public static final int MOTOR_INTAKE_ROTATION_1_ID = 0;
+    public static final int MOTOR_INTAKE_ROTATION_2_ID = 0;
 
-    public static final int ARM_JOINT_MOTOR_1 = 14;
-    public static final int ARM_JOINT_MOTOR_2 = 15;
-    public static final int ARM_GRIPPER_ENGAGE = 6;
-    public static final int ARM_GRIPPER_DISENGAGE = 7;
+    public static final int MOTOR_INTAKE_POSITION_ID = 0;
+
+    public static final int MOTOR_SLIDER_LENGTH_ID = 0;
 }

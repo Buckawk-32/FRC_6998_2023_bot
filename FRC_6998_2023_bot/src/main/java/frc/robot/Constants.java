@@ -5,6 +5,8 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.revrobotics.CANSparkMax.IdleMode;
+
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
@@ -80,91 +82,64 @@ public final class Constants {public final static Rotation2d SWERVE_LEFTFRONT_OF
 
 // --------------------------------------------------------------------
 
-  public static final boolean INTAKE_RIGHT_MOTOR_INVERTED = false;
-  public static final boolean INTAKE_LEFT_MOTOR_INVERTED = false;
+// I also need to test these vaules
 
-  public static final double INTAKE_MOTOR_KP = 0.75;
-  public static final double INTAKE_MOTOR_KI = 0.0;
-  public static final double INTAKE_MOTOR_KD = 0.0;
-  public static final double INTAKE_MOTOR_KF = 0.0;
+  public static final boolean INTAKE_MOTOR_CONE_INVERTED = false;
+  public static final boolean INTAKE_MOTOR_BOX_INVERTED = false;
 
-  public static final double INTAKE_VOLTAGE_COMPENSATION = 12.0;
-  public static final double INTAKE_MOTOR_RPM = 730;
-  public static final int INTAKE_MOTOR_CURRENTLIMIT = 30;
+  public static final IdleMode INTAKE_MOTOR_CONE_IDLEMODE = IdleMode.kBrake;
+  public static final IdleMode INTAKE_MOTOR_BOX_IDLEMODE = IdleMode.kCoast;
+  public static final IdleMode INTAKE_MOTOR_ROTATION_IDLEMODE = IdleMode.kBrake;
+  public static final IdleMode INTAKE_MOTOR_POSITION_IDLEMODE = IdleMode.kBrake;
 
-// --------------------------------------------------------------------
+  public static final double INTAKE_MOTOR_CONE_KP = 0.0;
+  public static final double INTAKE_MOTOR_CONE_KI = 0.0;
+  public static final double INTAKE_MOTOR_CONE_KD = 0.0;
+  public static final double INTAKE_MOTOR_CONE_KF = 0.0;
 
-  public static final boolean TRANSFER_BELT_FRONT_MOTOR_INVERTED = false;
-  public static final boolean TRANSFER_BELT_BACK_MOTOR_INVERTED = false;
+  public static final double INTAKE_MOTOR_BOX_KP = 0.0;
+  public static final double INTAKE_MOTOR_BOX_KI = 0.0;
+  public static final double INTAKE_MOTOR_BOX_KD = 0.0;
+  public static final double INTAKE_MOTOR_BOX_KF = 0.0;
 
-  public static final double TRANSFER_BELT_FRONT_MOTOR_KP = 0.75;
-  public static final double TRANSFER_BELT_FRONT_MOTOR_KI = 0.0;
-  public static final double TRANSFER_BELT_FRONT_MOTOR_KD = 0.0;
-  public static final double TRANSFER_BELT_FRONT_MOTOR_KF = 0.0;
+  public static final double INTAKE_MOTOR_ROTATION_1_KP = 0.0;
+  public static final double INTAKE_MOTOR_ROTATION_1_KI = 0.0;
+  public static final double INTAKE_MOTOR_ROTATION_1_KD = 0.0;
+  public static final double INTAKE_MOTOR_ROTATION_1_KF = 0.0;
 
-  public static final double TRANSFER_BELT_BACK_MOTOR_KP = 0.75;
-  public static final double TRANSFER_BELT_BACK_MOTOR_KI = 0.0;
-  public static final double TRANSFER_BELT_BACK_MOTOR_KD = 0.0;
-  public static final double TRANSFER_BELT_BACK_MOTOR_KF = 0.0;
+  public static final double INTAKE_MOTOR_ROTATION_2_KP = 0.0;
+  public static final double INTAKE_MOTOR_ROTATION_2_KI = 0.0;
+  public static final double INTAKE_MOTOR_ROTATION_2_KD = 0.0;
+  public static final double INTAKE_MOTOR_ROTATION_2_KF = 0.0;
 
-  public static final int TRANSFER_BELT_FRONT_MOTOR_CURRENTLIMIT = 40;
-  public static final int TRANSFER_BELT_BACK_MOTOR_CURRENTLIMIT = 40;
+  public static final double INTAKE_MOTOR_POSITION_KP = 0.0;
+  public static final double INTAKE_MOTOR_POSITION_KI = 0.0;
+  public static final double INTAKE_MOTOR_POSITION_KD = 0.0;
+  public static final double INTAKE_MOTOR_POSITION_KF = 0.0;
 
-  public static final double TRANSFER_BELT_FRONT_MOTOR_VOLTAGE_COMPENSATION = 12.0;
-  public static final double TRANSFER_BELT_BACK_MOTOR_VOLTAGE_COMPENSATION = 12.0;
+  public static final double INTAKE_MOTOR_CONE_VOLTAGE_COMPENSATION = 12.0;
+  public static final double INTAKE_MOTOR_BOX_VOLTAGE_COMPENSATION = 12.0;
+  public static final double INTAKE_MOTOR_ROTATION_1_VOLTAGE_COMPENSATION = 12.0;
+  public static final double INTAKE_MOTOR_ROTATION_2_VOLTAGE_COMPENSATION = 12.0;
+  public static final double INTAKE_MOTOR_POSITION_VOLTAGE_COMPENSATION = 12.0;
 
-  public static final double TRANSFER_BELT_MOTOR_FRONT_RPM = 375;
-  public static final double TRANSFER_BELT_MOTOR_BACK_RPM = 375;
-
-// --------------------------------------------------------------------
-
-  public static final double TRANSFER_SENSOR_RESO = 0;
-  public static final double TRANSFER_SENSOR_RATE = 0;
-  public static final double TRANSFER_SENSOR_GAIN = 0;
-
-// --------------------------------------------------------------------
-
-  public static final boolean TRANSFER_UPRIGHT_MOTOR_INVERTED = false;
- 
-  public static final double TRANSFER_UPRIGHT_MOTOR_KP = 0.75;
-  public static final double TRANSFER_UPRIGHT_MOTOR_KI = 0.0;
-  public static final double TRANSFER_UPRIGHT_MOTOR_KD = 0.0;
-  public static final double TRANSFER_UPRIGHT_MOTOR_KF = 0.0;
- 
-  public static final int TRANSFER_UPRIGHT_MOTOR_CURRENTLIMIT = 40;
-  public static final double TRANSFER_UPRIGHT_MOTOR_VOLTAGE_COMPENSATION = 12.0;
+  public static final int INTAKE_MOTOR_CONE_CURRENTLIMIT = 0;
+  public static final int INTAKE_MOTOR_BOX_CURRENTLIMIT = 0;
+  public static final int INTAKE_MOTOR_ROTATION_1_CURRENTLIMIT = 0;
+  public static final int INTAKE_MOTOR_ROTATION_2_CURRENTLIMIT = 0;
+  public static final int INTAKE_MOTOR_POSITION_CURRENTLIMIT = 0;
 
 // --------------------------------------------------------------------
 
-  public static final double ARM_JOINT_1_KP = 0;
-  public static final double ARM_JOINT_1_KI = 0;
-  public static final double ARM_JOINT_1_KD = 0;
-  public static final double ARM_JOINT_1_KF = 0;
+  public static final IdleMode SLIDER_MOTOR_LENGTH_IDLEMODE = IdleMode.kBrake;
 
-  public static final double ARM_JOINT_2_KP = 0;
-  public static final double ARM_JOINT_2_KI = 0;
-  public static final double ARM_JOINT_2_KD = 0;
-  public static final double ARM_JOINT_2_KF = 0;
+  public static final double SLIDER_MOTOR_LENGTH_KP = 0.0;
+  public static final double SLIDER_MOTOR_LENGTH_KI = 0.0;
+  public static final double SLIDER_MOTOR_LENGTH_KD = 0.0;
+  public static final double SLIDER_MOTOR_LENGTH_KF = 0.0;
 
-  public static final double ARM_JOINT_1_KS = 0;
-  public static final double ARM_JOINT_1_KG = 0;
-  public static final double ARM_JOINT_1_KV = 0;
-  public static final double ARM_JOINT_1_KA = 0;
-
-  public static final double ARM_JOINT_2_KS = 0;
-  public static final double ARM_JOINT_2_KG = 0;
-  public static final double ARM_JOINT_2_KV = 0;
-  public static final double ARM_JOINT_2_KA = 0;
-
-  public static final double ARM_JOINT_1_POSRADIANS_SETPOINT = 0;
-  public static final double ARM_JOINT_1_VELRADIANS_PERSEC_SETPOINT = 0;
-  public static final double ARM_JOINT_1_ACCEL_PERSEC_SQUARED_SETPOINT = 0;
-
-  public static final double ARM_JOINT_2_POSRADIANS_SETPOINT = 0;
-  public static final double ARM_JOINT_2_VELRADIANS_PERSEC_SETPOINT = 0;
-  public static final double ARM_JOINT_2_ACCEL_PERSEC_SQUARED_SETPOINT = 0;
-  public static final double ARM_JOINT_1_RPM = 0;
-  public static final double ARM_JOINT_2_RPM = 0;
+  public static final double SLIDER_MOTOR_LENGTH_VOLTAGE_COMPENSATION = 12.0;
+  public static final int SLIDER_MOTOR_LENGTH_CURRENTLIMIT = 0;
 
 // --------------------------------------------------------------------
 }
