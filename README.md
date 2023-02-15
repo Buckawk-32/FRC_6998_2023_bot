@@ -22,7 +22,8 @@ Gen 2 consists of and integrated claw / intake attached on to the elevator on a 
 ### Problems to fix
 1. Controller config
 2. Intake should have a range of movement using kposition
-3. Testing needs to be quickly done for mock competition
+3. Rotation of Intake might need to be buttons instead of joystick 
+4. Testing needs to be quickly done for mock competition
 
 ## The Current Goal
 Finish Gen 2
