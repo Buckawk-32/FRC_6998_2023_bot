@@ -30,7 +30,9 @@ Finish Gen 2
 
 ## Objectives
 Finish code by 2/15
+
 Finish testing by 2/17
+
 Mock Competition on 2/18
 
 ## Contributions
