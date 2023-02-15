@@ -4,6 +4,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.Robotmap;
@@ -119,27 +120,17 @@ public class IntakeSubsystem extends SubsystemBase {
         INTAKE_MOTOR_ROTATION_1.follow(INTAKE_MOTOR_ROTATION_2);
     }
 
-    private static IntakeSubsystem Intake_instance = null;
-
-    public static IntakeSubsystem Intake_GetInstance() {
-        if (Intake_instance == null)
-        {
-            Intake_instance = new IntakeSubsystem();
-        }
-        return Intake_instance;
-    }
-
     // Might need to add feedforward and better SetRef()
 
-    public static void Intake_Cone_Hold(double INTAKE_MOTOR_CONE_RPM) {
+    public void Intake_Cone_Hold(double INTAKE_MOTOR_CONE_RPM) {
         INTAKE_MOTOR_CONE.getPIDController().setReference(INTAKE_MOTOR_CONE_RPM, ControlType.kVelocity);        
     }
 
-    public static void Intake_Cone_Release(double INTAKE_MOTOR_CONE_RPM) {
+    public void Intake_Cone_Release(double INTAKE_MOTOR_CONE_RPM) {
         INTAKE_MOTOR_CONE.getPIDController().setReference(-INTAKE_MOTOR_CONE_RPM, ControlType.kVelocity);
     }
 
-    public static void Intake_Cone_Stop() {
+    public void Intake_Cone_Stop() {
         INTAKE_MOTOR_CONE.set(0);
     }
 
@@ -147,7 +138,7 @@ public class IntakeSubsystem extends SubsystemBase {
         return INTAKE_MOTOR_CONE.get() != 0;
     }
 
-    public static void Intake_Box_Shoot(double INTAKE_MOTOR_BOX_RPM) {
+    public void Intake_Box_Shoot(double INTAKE_MOTOR_BOX_RPM) {
         INTAKE_MOTOR_BOX.getPIDController().setReference(INTAKE_MOTOR_BOX_RPM, ControlType.kVelocity);
     }
 
@@ -159,11 +150,11 @@ public class IntakeSubsystem extends SubsystemBase {
         return INTAKE_MOTOR_BOX.get() != 0;
     }
 
-    public static void Intake_Rotate_Up(double INTAKE_MOTOR_ROTATION_RPM) {
+    public void Intake_Rotate_Up(double INTAKE_MOTOR_ROTATION_RPM) {
         INTAKE_MOTOR_ROTATION_2.getPIDController().setReference(INTAKE_MOTOR_ROTATION_RPM, ControlType.kSmartMotion);
     }
 
-    public static void Intake_Rotate_Down(double INTAKE_MOTOR_ROTATION_RPM) {
+    public void Intake_Rotate_Down(double INTAKE_MOTOR_ROTATION_RPM) {
         INTAKE_MOTOR_ROTATION_2.getPIDController().setReference(-INTAKE_MOTOR_ROTATION_RPM, ControlType.kSmartMotion);
     }
 
@@ -175,15 +166,20 @@ public class IntakeSubsystem extends SubsystemBase {
         return INTAKE_MOTOR_ROTATION_2.get() != 0;
     }
     
-    public static void Intake_Position_Up(double INTAKE_MOTOR_POSITION_RPM) {
+    public void Intake_Position_Drive(double INTAKE_MOTOR_POSITION_RPM) {
         INTAKE_MOTOR_POSITION.getPIDController().setReference(INTAKE_MOTOR_POSITION_RPM, ControlType.kSmartMotion);
-    }
-
-    public static void Intake_Position_Down(double INTAKE_MOTOR_POSITION_RPM) {
-        INTAKE_MOTOR_POSITION.getPIDController().setReference(-INTAKE_MOTOR_POSITION_RPM, ControlType.kSmartMotion);
     }
     
     public static boolean Intake_Position_Running() {
         return INTAKE_MOTOR_POSITION.get() != 0;
+    }
+
+    @Override
+    public void periodic() {
+        SmartDashboard.putNumber("INTAKE_ROT_1_POS", INTAKE_MOTOR_ROTATION_1.getEncoder().getPositionConversionFactor());
+        SmartDashboard.putNumber("INTAKE_ROT_1_VEL", INTAKE_MOTOR_ROTATION_2.getEncoder().getVelocityConversionFactor());
+        SmartDashboard.putNumber("INTAKE_ROT_2_POS", INTAKE_MOTOR_ROTATION_2.getEncoder().getPositionConversionFactor());
+        SmartDashboard.putNumber("INTAKE_ROT_2_VEL", INTAKE_MOTOR_ROTATION_2.getEncoder().getVelocityConversionFactor());
+        SmartDashboard.putNumber("INTAKE_POS", INTAKE_MOTOR_POSITION.getEncoder().getPositionConversionFactor());
     }
 }

@@ -92,15 +92,25 @@ public final class Constants {public final static Rotation2d SWERVE_LEFTFRONT_OF
   public static final IdleMode INTAKE_MOTOR_ROTATION_IDLEMODE = IdleMode.kBrake;
   public static final IdleMode INTAKE_MOTOR_POSITION_IDLEMODE = IdleMode.kBrake;
 
+// --------------------------------------------------------------------
+
   public static final double INTAKE_MOTOR_CONE_KP = 0.0;
   public static final double INTAKE_MOTOR_CONE_KI = 0.0;
   public static final double INTAKE_MOTOR_CONE_KD = 0.0;
   public static final double INTAKE_MOTOR_CONE_KF = 0.0;
 
+  public static final double INTAKE_MOTOR_CONE_RPM = 0.0;
+
+// --------------------------------------------------------------------
+
   public static final double INTAKE_MOTOR_BOX_KP = 0.0;
   public static final double INTAKE_MOTOR_BOX_KI = 0.0;
   public static final double INTAKE_MOTOR_BOX_KD = 0.0;
   public static final double INTAKE_MOTOR_BOX_KF = 0.0;
+
+  public static final double INTAKE_MOTOR_BOX_RPM = 0.0;
+
+// --------------------------------------------------------------------
 
   public static final double INTAKE_MOTOR_ROTATION_1_KP = 0.0;
   public static final double INTAKE_MOTOR_ROTATION_1_KI = 0.0;
@@ -112,10 +122,18 @@ public final class Constants {public final static Rotation2d SWERVE_LEFTFRONT_OF
   public static final double INTAKE_MOTOR_ROTATION_2_KD = 0.0;
   public static final double INTAKE_MOTOR_ROTATION_2_KF = 0.0;
 
+  public static final double INTAKE_ROT_DEADBAND = 0.05;
+
+// --------------------------------------------------------------------
+
   public static final double INTAKE_MOTOR_POSITION_KP = 0.0;
   public static final double INTAKE_MOTOR_POSITION_KI = 0.0;
   public static final double INTAKE_MOTOR_POSITION_KD = 0.0;
   public static final double INTAKE_MOTOR_POSITION_KF = 0.0;
+
+  public static final double INTAKE_POS_DEADBAND = 0.05;
+
+// --------------------------------------------------------------------
 
   public static final double INTAKE_MOTOR_CONE_VOLTAGE_COMPENSATION = 12.0;
   public static final double INTAKE_MOTOR_BOX_VOLTAGE_COMPENSATION = 12.0;
@@ -140,6 +158,8 @@ public final class Constants {public final static Rotation2d SWERVE_LEFTFRONT_OF
 
   public static final double SLIDER_MOTOR_LENGTH_VOLTAGE_COMPENSATION = 12.0;
   public static final int SLIDER_MOTOR_LENGTH_CURRENTLIMIT = 0;
+
+  public static final double SLIDER_DEADBAND = 0.05;
 
 // --------------------------------------------------------------------
 }

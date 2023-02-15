@@ -4,6 +4,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.Robotmap;
@@ -33,25 +34,17 @@ public class SliderSubsystem extends SubsystemBase {
         SLIDER_MOTOR_LENGTH.getEncoder().setVelocityConversionFactor(0);
     }
 
-    private static SliderSubsystem Slider_instance= null;
-
-    public static SliderSubsystem Slider_GetInstance() {
-        if (Slider_instance == null) 
-        {
-            Slider_instance = new SliderSubsystem();
-        }
-        return Slider_instance;
-    }
-
-    public static void Slider_Extend(double SLIDER_MOTOR_RPM) {
-        SLIDER_MOTOR_LENGTH.getPIDController().setReference(SLIDER_MOTOR_RPM, ControlType.kSmartMotion);
-    }
-
-    public static void Slider_Retract(double SLIDER_MOTOR_RPM) {
-        SLIDER_MOTOR_LENGTH.getPIDController().setReference(-SLIDER_MOTOR_RPM, ControlType.kSmartMotion);
+    public void Slider_Extend(double SLIDER_MOTOR_RPM) {
+        SLIDER_MOTOR_LENGTH.getPIDController().setReference(SLIDER_MOTOR_RPM, ControlType.kPosition);
     }
 
     public static boolean Slider_Running() {
         return SLIDER_MOTOR_LENGTH.get() != 0;
     }
+
+    @Override
+    public void periodic() {
+        SmartDashboard.getNumber("SLIDER_POS", SLIDER_MOTOR_LENGTH.getEncoder().getPositionConversionFactor());
+    }
+
 }

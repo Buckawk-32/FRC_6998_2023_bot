@@ -4,7 +4,11 @@
 
 package frc.robot;
 
+import frc.robot.commands.IntakePivotCommand;
+import frc.robot.commands.SliderDriveCommand;
 import frc.robot.commands.SwerveDriveCommand;
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.SliderSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +33,10 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public class RobotContainer {
 
     private final SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
+
+    private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
+
+    private final SliderSubsystem sliderSubsystem = new SliderSubsystem();
 
     private final static XboxController controller_driveX = new XboxController(0);
 
@@ -63,14 +71,29 @@ public class RobotContainer {
         () -> controller_driveX.getRawAxis(XboxController.Axis.kLeftY.value),
         () -> controller_driveX.getRawAxis(XboxController.Axis.kLeftX.value),
         () -> controller_driveX.getRawAxis(XboxController.Axis.kRightX.value),
-        () -> controller_driveX.getStartButton()
+        () -> controller_driveX.getLeftBumper()
+        ));
+
+      intakeSubsystem.setDefaultCommand(new IntakePivotCommand(
+        intakeSubsystem,
+        () -> controller_operatorX.getRawAxis(XboxController.Axis.kLeftTrigger.value),
+        () -> controller_operatorX.getRawAxis(XboxController.Axis.kRightTrigger.value),
+        () -> controller_operatorX.getRawButton(XboxController.Button.kA.value),
+        () -> controller_operatorX.getRawButton(XboxController.Button.kB.value),
+        () -> controller_operatorX.getRawButton(XboxController.Button.kX.value),
+        () -> controller_operatorX.getRawAxis(XboxController.Axis.kLeftY.value)
+        ));
+
+      sliderSubsystem.setDefaultCommand(new SliderDriveCommand(
+        sliderSubsystem,
+        () -> controller_operatorX.getRawAxis(XboxController.Axis.kRightX.value)        
         ));
 
         configureBindings();
     }
 
     private void configureBindings() {
-      new JoystickButton(controller_driveX, XboxController.Button.kStart.value)
+      new JoystickButton(controller_driveX, XboxController.Button.kLeftBumper.value)
         .onTrue(new InstantCommand(swerveSubsystem::zeroGyro));
     }
 
