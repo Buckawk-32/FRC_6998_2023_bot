@@ -17,7 +17,12 @@ Gen 2 consists of and integrated claw / intake attached on to the elevator on a 
     - 1 motor to increase and decrease ther length of the elvator
 
 - Swerve Drive Subsystem
-    - Already done, look at the Swerve drive training repository 
+    - Already done, look at the Swerve drive training repository
+
+### Problems to fix
+1. Controller config
+2. Intake should have a range of movement using kposition
+3. Testing needs to be quickly done for mock competition
 
 ## The Current Goal
 Finish Gen 2
@@ -25,6 +30,7 @@ Finish Gen 2
 ## Objectives
 Finish code by 2/15
 Finish testing by 2/17
+Mock Competition on 2/18
 
 ## Contributions
 Thanks to a lot of google and github (team 364, 138, 2168), WPI documentation, and the seniors in our team.
