@@ -26,7 +26,7 @@ Gen 2 consists of and integrated claw / intake attached on to the elevator on a 
 4. Testing needs to be quickly done for mock competition
 
 ## The Current Goal
-Finish Gen 2
+Finish Gen 2, then finish testing
 
 ## Objectives
 Finish code by 2/15
