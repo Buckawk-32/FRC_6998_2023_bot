@@ -43,7 +43,7 @@ public class RobotContainer {
     private final static XboxController controller_operatorX = new XboxController(1);
 
     List<PathPlannerTrajectory> pathGroup = 
-      PathPlanner.loadPathGroup("New New Path", new PathConstraints(4, 3));
+      PathPlanner.loadPathGroup("New Path", new PathConstraints(4, 3));
     
     HashMap<String, Command> eventMap = new HashMap<>();
 
