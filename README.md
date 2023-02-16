@@ -25,7 +25,7 @@ Gen 2 consists of and integrated claw / intake attached on to the elevator on a 
 3. Rotation of Intake might need to be buttons instead of joystick 
 4. Testing needs to be quickly done for mock competition
 
-#### Testing
+### Testing
 1. PID vaules for each subsystem
 2. Debugging in general
     - Debugging controller
