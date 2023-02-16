@@ -30,7 +30,8 @@ public class Robotmap {
     public static final int MOTOR_INTAKE_ROTATION_1_ID = 0;
     public static final int MOTOR_INTAKE_ROTATION_2_ID = 0;
 
-    public static final int MOTOR_INTAKE_POSITION_ID = 0;
+    public static final int MOTOR_INTAKE_POSITION_1_ID = 0;
+    public static final int MOTOR_INTAKE_POSITION_2_ID = 0;
 
     public static final int MOTOR_SLIDER_LENGTH_ID = 0;
 }

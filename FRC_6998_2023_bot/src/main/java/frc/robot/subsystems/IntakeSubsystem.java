@@ -17,7 +17,8 @@ public class IntakeSubsystem extends SubsystemBase {
     public static CANSparkMax INTAKE_MOTOR_ROTATION_1;
     public static CANSparkMax INTAKE_MOTOR_ROTATION_2;
 
-    public static CANSparkMax INTAKE_MOTOR_POSITION;
+    public static CANSparkMax INTAKE_MOTOR_POSITION_1;
+    public static CANSparkMax INTAKE_MOTOR_POSITION_2;
 
     public IntakeSubsystem() {
         INTAKE_MOTOR_CONE = new CANSparkMax(Robotmap.MOTOR_INTAKE_CONE_ID, MotorType.kBrushless);
@@ -26,7 +27,8 @@ public class IntakeSubsystem extends SubsystemBase {
         INTAKE_MOTOR_ROTATION_1 = new CANSparkMax(Robotmap.MOTOR_INTAKE_ROTATION_1_ID, MotorType.kBrushless);
         INTAKE_MOTOR_ROTATION_2 = new CANSparkMax(Robotmap.MOTOR_INTAKE_ROTATION_2_ID, MotorType.kBrushless);
 
-        INTAKE_MOTOR_POSITION = new CANSparkMax(Robotmap.MOTOR_INTAKE_POSITION_ID,MotorType.kBrushless);
+        INTAKE_MOTOR_POSITION_1 = new CANSparkMax(Robotmap.MOTOR_INTAKE_POSITION_1_ID,MotorType.kBrushless);
+        INTAKE_MOTOR_POSITION_2 = new CANSparkMax(Robotmap.MOTOR_INTAKE_POSITION_2_ID,MotorType.kBrushless);
 
         // ---------------------------------------------------------------------
 
@@ -100,24 +102,42 @@ public class IntakeSubsystem extends SubsystemBase {
     
         // ---------------------------------------------------------------------
 
-        INTAKE_MOTOR_POSITION.restoreFactoryDefaults();
-        INTAKE_MOTOR_POSITION.setSmartCurrentLimit(Constants.INTAKE_MOTOR_POSITION_CURRENTLIMIT);
-        INTAKE_MOTOR_POSITION.enableVoltageCompensation(Constants.INTAKE_MOTOR_POSITION_VOLTAGE_COMPENSATION);
+        INTAKE_MOTOR_POSITION_1.restoreFactoryDefaults();
+        INTAKE_MOTOR_POSITION_1.setSmartCurrentLimit(Constants.INTAKE_MOTOR_POSITION_1_CURRENTLIMIT);
+        INTAKE_MOTOR_POSITION_1.enableVoltageCompensation(Constants.INTAKE_MOTOR_POSITION_1_VOLTAGE_COMPENSATION);
 
-        INTAKE_MOTOR_POSITION.setIdleMode(Constants.INTAKE_MOTOR_POSITION_IDLEMODE);
+        INTAKE_MOTOR_POSITION_1.setIdleMode(Constants.INTAKE_MOTOR_POSITION_IDLEMODE);
 
-        INTAKE_MOTOR_POSITION.getPIDController().setP(Constants.INTAKE_MOTOR_POSITION_KP);
-        INTAKE_MOTOR_POSITION.getPIDController().setI(Constants.INTAKE_MOTOR_POSITION_KI);
-        INTAKE_MOTOR_POSITION.getPIDController().setD(Constants.INTAKE_MOTOR_POSITION_KD);
-        INTAKE_MOTOR_POSITION.getPIDController().setFF(Constants.INTAKE_MOTOR_POSITION_KF);
+        INTAKE_MOTOR_POSITION_1.getPIDController().setP(Constants.INTAKE_MOTOR_POSITION_1_KP);
+        INTAKE_MOTOR_POSITION_1.getPIDController().setI(Constants.INTAKE_MOTOR_POSITION_1_KI);
+        INTAKE_MOTOR_POSITION_1.getPIDController().setD(Constants.INTAKE_MOTOR_POSITION_1_KD);
+        INTAKE_MOTOR_POSITION_1.getPIDController().setFF(Constants.INTAKE_MOTOR_POSITION_1_KF);
 
         // Need to change the conversion factor
-        INTAKE_MOTOR_POSITION.getEncoder().setPositionConversionFactor(0);
-        INTAKE_MOTOR_POSITION.getEncoder().setVelocityConversionFactor(0);
+        INTAKE_MOTOR_POSITION_1.getEncoder().setPositionConversionFactor(0);
+        INTAKE_MOTOR_POSITION_1.getEncoder().setVelocityConversionFactor(0);
+
+        // ---------------------------------------------------------------------
+
+        INTAKE_MOTOR_POSITION_2.restoreFactoryDefaults();
+        INTAKE_MOTOR_POSITION_2.setSmartCurrentLimit(Constants.INTAKE_MOTOR_POSITION_2_CURRENTLIMIT);
+        INTAKE_MOTOR_POSITION_2.enableVoltageCompensation(Constants.INTAKE_MOTOR_POSITION_2_VOLTAGE_COMPENSATION);
+
+        INTAKE_MOTOR_POSITION_2.setIdleMode(Constants.INTAKE_MOTOR_POSITION_IDLEMODE);
+
+        INTAKE_MOTOR_POSITION_2.getPIDController().setP(Constants.INTAKE_MOTOR_POSITION_2_KP);
+        INTAKE_MOTOR_POSITION_2.getPIDController().setI(Constants.INTAKE_MOTOR_POSITION_2_KI);
+        INTAKE_MOTOR_POSITION_2.getPIDController().setD(Constants.INTAKE_MOTOR_POSITION_2_KD);
+        INTAKE_MOTOR_POSITION_2.getPIDController().setFF(Constants.INTAKE_MOTOR_POSITION_2_KF);
+
+        // Need to change the conversion factor
+        INTAKE_MOTOR_POSITION_2.getEncoder().setPositionConversionFactor(0);
+        INTAKE_MOTOR_POSITION_2.getEncoder().setVelocityConversionFactor(0);
 
         // ---------------------------------------------------------------------
 
         INTAKE_MOTOR_ROTATION_1.follow(INTAKE_MOTOR_ROTATION_2);
+        INTAKE_MOTOR_POSITION_2.follow(INTAKE_MOTOR_POSITION_1);
     }
 
     // Might need to add feedforward and better SetRef()
@@ -167,11 +187,11 @@ public class IntakeSubsystem extends SubsystemBase {
     }
     
     public void Intake_Position_Drive(double INTAKE_MOTOR_POSITION_RPM) {
-        INTAKE_MOTOR_POSITION.getPIDController().setReference(INTAKE_MOTOR_POSITION_RPM, ControlType.kSmartMotion);
+        INTAKE_MOTOR_POSITION_1.getPIDController().setReference(INTAKE_MOTOR_POSITION_RPM, ControlType.kSmartMotion);
     }
     
     public static boolean Intake_Position_Running() {
-        return INTAKE_MOTOR_POSITION.get() != 0;
+        return INTAKE_MOTOR_POSITION_1.get() != 0;
     }
 
     @Override
@@ -180,6 +200,6 @@ public class IntakeSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("INTAKE_ROT_1_VEL", INTAKE_MOTOR_ROTATION_2.getEncoder().getVelocityConversionFactor());
         SmartDashboard.putNumber("INTAKE_ROT_2_POS", INTAKE_MOTOR_ROTATION_2.getEncoder().getPositionConversionFactor());
         SmartDashboard.putNumber("INTAKE_ROT_2_VEL", INTAKE_MOTOR_ROTATION_2.getEncoder().getVelocityConversionFactor());
-        SmartDashboard.putNumber("INTAKE_POS", INTAKE_MOTOR_POSITION.getEncoder().getPositionConversionFactor());
+        SmartDashboard.putNumber("INTAKE_POS", INTAKE_MOTOR_POSITION_1.getEncoder().getPositionConversionFactor());
     }
 }

@@ -1,8 +1,8 @@
 # FRC_6998_2023_bot
  FRC_6998, Season 2023 robot
 
-## Generation No.1, Insights
-The one thing that is the most biggest change is about the arm. We are taking out the arm for an elevator for the mock competition we have. We are also making our robot much less complicated, removing the transfer subsystem and arm subsystem completely, making programming much more easier
+## Generation No.1 Insights
+The one thing that is the most biggest change is the arm. We are taking out the arm for an elevator for the mock competition we have. We are also making our robot much less complicated, removing the transfer subsystem and arm subsystem completely, making programming much more easier
 
 ## Generation No.2
 Gen 2 consists of and integrated claw / intake attached on to the elevator on a swerve drive chassis
@@ -24,6 +24,21 @@ Gen 2 consists of and integrated claw / intake attached on to the elevator on a 
 2. Intake should have a range of movement using kposition
 3. Rotation of Intake might need to be buttons instead of joystick 
 4. Testing needs to be quickly done for mock competition
+
+#### Testing
+1. PID vaules for each subsystem
+2. Debugging in general
+    - Debugging controller
+        - Intake rotation mapped to button or stick or trigger
+        - Intake position mapped to button or stick or trigger
+        - Slider position mapped to button or stick or trigger
+    - Debugging each subsytem
+        - Intake subsystem
+        - Slider subsystem
+3. Auto in general
+    - Autobalance
+    - PathPlanner
+    - Eventmaps
 
 ## The Current Goal
 Finish Gen 2, then finish testing

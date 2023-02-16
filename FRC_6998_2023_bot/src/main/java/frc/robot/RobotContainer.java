@@ -42,9 +42,6 @@ public class RobotContainer {
 
     private final static XboxController controller_operatorX = new XboxController(1);
 
-    public static double LeftY = controller_operatorX.getLeftY();
-    public static double RightY = controller_operatorX.getRightY();
-
     List<PathPlannerTrajectory> pathGroup = 
       PathPlanner.loadPathGroup("New New Path", new PathConstraints(4, 3));
     

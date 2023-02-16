@@ -25,6 +25,9 @@ public class SwerveSubsystem extends SubsystemBase {
     public SwerveModule[] mSwerveModules;
     public AHRS navX;
 
+    public static final double k_OFF_BALANCE_ANGLE_THRESHOLD_DEG = 10;
+    public static final double k_ON_BALANCE_ANGLE_THRESHOLD_DEG = 5;
+
     public SwerveSubsystem() {
         navX = new AHRS(SerialPort.Port.kMXP);
         navX.reset();

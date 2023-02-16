@@ -27,6 +27,7 @@ public final class Constants {public final static Rotation2d SWERVE_LEFTFRONT_OF
   public final static Rotation2d SWERVE_LEFTREAR_OFFSET = Rotation2d.fromDegrees(11.601563);
   public final static Rotation2d SWERVE_RIGHTFRONT_OFFSET = Rotation2d.fromDegrees(71.806641);
   public final static Rotation2d SWERVE_RIGHTREAR_OFFSET = Rotation2d.fromDegrees(175.605469);
+// swerve offset need to fix
 
   public final static double SWERVE_CHASSIS_TRACKWIDTH_METERS = 0.62865;
   public final static double SWERVE_CHASSIS_WHEELBASE_METERS = 0.62865;
@@ -53,6 +54,7 @@ public final class Constants {public final static Rotation2d SWERVE_LEFTFRONT_OF
   public final static double SWERVE_DRIVE_MOTOR_KF = 0.0;
   public final static double SWERVE_DRIVE_MOTOR_OPENLOOPRAMP = 0.25;
   public final static double SWERVE_DRIVE_MOTOR_CLOSELOOPRAMP = 0.0;
+
   public final static NeutralMode DRIVE_NEUTRAL_MODE = NeutralMode.Brake;
 
   public final static double SWERVE_DRIVE_KS = (0.32 / MAX_VOLTAGE);
@@ -126,10 +128,15 @@ public final class Constants {public final static Rotation2d SWERVE_LEFTFRONT_OF
 
 // --------------------------------------------------------------------
 
-  public static final double INTAKE_MOTOR_POSITION_KP = 0.0;
-  public static final double INTAKE_MOTOR_POSITION_KI = 0.0;
-  public static final double INTAKE_MOTOR_POSITION_KD = 0.0;
-  public static final double INTAKE_MOTOR_POSITION_KF = 0.0;
+  public static final double INTAKE_MOTOR_POSITION_1_KP = 0.0;
+  public static final double INTAKE_MOTOR_POSITION_1_KI = 0.0;
+  public static final double INTAKE_MOTOR_POSITION_1_KD = 0.0;
+  public static final double INTAKE_MOTOR_POSITION_1_KF = 0.0;
+
+  public static final double INTAKE_MOTOR_POSITION_2_KP = 0.0;
+  public static final double INTAKE_MOTOR_POSITION_2_KI = 0.0;
+  public static final double INTAKE_MOTOR_POSITION_2_KD = 0.0;
+  public static final double INTAKE_MOTOR_POSITION_2_KF = 0.0;
 
   public static final double INTAKE_POS_DEADBAND = 0.05;
 
@@ -139,13 +146,15 @@ public final class Constants {public final static Rotation2d SWERVE_LEFTFRONT_OF
   public static final double INTAKE_MOTOR_BOX_VOLTAGE_COMPENSATION = 12.0;
   public static final double INTAKE_MOTOR_ROTATION_1_VOLTAGE_COMPENSATION = 12.0;
   public static final double INTAKE_MOTOR_ROTATION_2_VOLTAGE_COMPENSATION = 12.0;
-  public static final double INTAKE_MOTOR_POSITION_VOLTAGE_COMPENSATION = 12.0;
+  public static final double INTAKE_MOTOR_POSITION_1_VOLTAGE_COMPENSATION = 12.0;
+  public static final double INTAKE_MOTOR_POSITION_2_VOLTAGE_COMPENSATION = 12.0;
 
   public static final int INTAKE_MOTOR_CONE_CURRENTLIMIT = 0;
   public static final int INTAKE_MOTOR_BOX_CURRENTLIMIT = 0;
   public static final int INTAKE_MOTOR_ROTATION_1_CURRENTLIMIT = 0;
   public static final int INTAKE_MOTOR_ROTATION_2_CURRENTLIMIT = 0;
-  public static final int INTAKE_MOTOR_POSITION_CURRENTLIMIT = 0;
+  public static final int INTAKE_MOTOR_POSITION_1_CURRENTLIMIT = 0;
+  public static final int INTAKE_MOTOR_POSITION_2_CURRENTLIMIT = 0;
 
 // --------------------------------------------------------------------
 
