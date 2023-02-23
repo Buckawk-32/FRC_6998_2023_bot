@@ -36,12 +36,14 @@ public final class Constants {public final static Rotation2d SWERVE_LEFTFRONT_OF
   public final static double SWERVE_MAX_SPEED = 4.5;
   public final static double SWERVE_MAX_ANGULAR_VELOCITY = 4.5;
 
+  public final static double VOLTAGE_COMPENSATION = 12.0;
+
   public final static int SWERVE_ANGLE_CONTINUOUS_CURRENT_LIMIT = 25;
   public final static int SWERVE_ANGLE_PEAK_CURRENT_LIMIT = 40;
   public final static double SWERVE_ANGLE_PEAK_CURRENT_DURATION = 0.1;
   public final static boolean SWERVE_ANGLE_CURRENT_LIMIT_ENABLE = true;
 
-  public final static NeutralMode ANGLE_NEUTRAL_MODE = NeutralMode.Coast;
+  public final static IdleMode ANGLE_NEUTRAL_MODE = IdleMode.kCoast;
 
   public final static int SWERVE_DRIVE_CONTINUOUS_CURRENT_LIMIT = 35;
   public final static int SWERVE_DRIVE_PEAK_CURRENT_LIMIT = 60;
@@ -81,6 +83,8 @@ public final class Constants {public final static Rotation2d SWERVE_LEFTFRONT_OF
   public static final double SWERVE_AUTO_Z_KP = 0.0;
   public static final double SWERVE_AUTO_Z_KI = 0.0;
   public static final double SWERVE_AUTO_Z_KD = 0.0;
+
+  public static final double BALANCE_DEG_GOAL = 0.0;
 
 // --------------------------------------------------------------------
 

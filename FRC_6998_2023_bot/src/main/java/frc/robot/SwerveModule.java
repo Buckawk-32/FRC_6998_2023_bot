@@ -10,6 +10,9 @@ import com.ctre.phoenix.sensors.CANCoder;
 import com.ctre.phoenix.sensors.CANCoderConfiguration;
 import com.ctre.phoenix.sensors.SensorInitializationStrategy;
 import com.ctre.phoenix.sensors.SensorTimeBase;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.RelativeEncoder;
 
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -25,9 +28,10 @@ public class SwerveModule {
     private Rotation2d angleOffSet;
     private Rotation2d lastAngle;
 
-    private TalonFX mAngleMotor;
+    private CANSparkMax mAngleMotor;
     private TalonFX mDriveMotor;
     private CANCoder angleEncoder;
+    private RelativeEncoder AngleMotor_encoder;
 
     SimpleMotorFeedforward feedforward = 
         new SimpleMotorFeedforward(Constants.SWERVE_DRIVE_KS, Constants.SWERVE_DRIVE_KV, Constants.SWERVE_DRIVE_KA);
@@ -40,7 +44,8 @@ public class SwerveModule {
         angleEncoder = new CANCoder(CANcoderID, Robotmap.SWERVE_CANBUS_TYPE);
         configAngleEncoder();
 
-        mAngleMotor = new TalonFX(angleMotorID, Robotmap.SWERVE_CANBUS_TYPE);
+        mAngleMotor = new CANSparkMax(angleMotorID, MotorType.kBrushless);
+        AngleMotor_encoder = mAngleMotor.getEncoder();
         configAngleMotor();
 
         mDriveMotor = new TalonFX(driveMotorID, Robotmap.SWERVE_CANBUS_TYPE);
@@ -69,12 +74,12 @@ public class SwerveModule {
     private void setAngle (SwerveModuleState desiredState) {
         Rotation2d angle = (Math.abs(desiredState.speedMetersPerSecond) <= (Constants.SWERVE_MAX_SPEED * 0.01)) ? lastAngle : desiredState.angle;
 
-        mAngleMotor.set(ControlMode.Position, Conversions.degreesToFalcon(angle.getDegrees(), swerveTypeConstants.angleGearRatio));
+        mAngleMotor.getPIDController().setReference(angle.getDegrees(), CANSparkMax.ControlType.kPosition);
         lastAngle = angle;
     }
 
     private Rotation2d getAngle() {
-        return Rotation2d.fromDegrees(Conversions.falconToDegrees(mAngleMotor.getSelectedSensorPosition(), swerveTypeConstants.angleGearRatio));
+        return Rotation2d.fromDegrees(AngleMotor_encoder.getPosition());
     }
 
     public Rotation2d getCANCoder() {
@@ -83,7 +88,7 @@ public class SwerveModule {
 
     public void resetToAbsolute () {
         double absolutePosition = Conversions.degreesToFalcon(getCANCoder().getDegrees() - angleOffSet.getDegrees(), swerveTypeConstants.angleGearRatio);
-        mAngleMotor.setSelectedSensorPosition(absolutePosition);
+        AngleMotor_encoder.setPosition(absolutePosition);
     } 
 
     private void configAngleEncoder () {
@@ -98,21 +103,19 @@ public class SwerveModule {
     }
 
     private void configAngleMotor () {
-        TalonFXConfiguration mAngleMConfig = new TalonFXConfiguration();
-        mAngleMConfig.slot0.kP = swerveTypeConstants.angleKP;
-        mAngleMConfig.slot0.kI = swerveTypeConstants.angleKI;
-        mAngleMConfig.slot0.kD = swerveTypeConstants.angleKD;
-        mAngleMConfig.slot0.kF = swerveTypeConstants.angleKF;
-        mAngleMConfig.supplyCurrLimit = new SupplyCurrentLimitConfiguration(
-            Constants.SWERVE_ANGLE_CURRENT_LIMIT_ENABLE,
-            Constants.SWERVE_ANGLE_CONTINUOUS_CURRENT_LIMIT,
-            Constants.SWERVE_ANGLE_PEAK_CURRENT_LIMIT,
-            Constants.SWERVE_ANGLE_PEAK_CURRENT_DURATION);
-        
-        mAngleMotor.configFactoryDefault();
-        mAngleMotor.configAllSettings(mAngleMConfig);
+        mAngleMotor.restoreFactoryDefaults();
+
+        mAngleMotor.getPIDController().setP(swerveTypeConstants.angleKP);
+        mAngleMotor.getPIDController().setI(swerveTypeConstants.angleKI);
+        mAngleMotor.getPIDController().setD(swerveTypeConstants.angleKD);
+        mAngleMotor.getPIDController().setFF(swerveTypeConstants.angleKF);
+        mAngleMotor.setSmartCurrentLimit(Constants.SWERVE_ANGLE_CONTINUOUS_CURRENT_LIMIT);
+        mAngleMotor.enableVoltageCompensation(Constants.VOLTAGE_COMPENSATION);
+
         mAngleMotor.setInverted(swerveTypeConstants.angleMotorInvert);
-        mAngleMotor.setNeutralMode(Constants.ANGLE_NEUTRAL_MODE);
+        mAngleMotor.setIdleMode(Constants.ANGLE_NEUTRAL_MODE);
+        AngleMotor_encoder.setPositionConversionFactor(360 / swerveTypeConstants.angleGearRatio);
+        mAngleMotor.burnFlash();
         resetToAbsolute();
     }
 

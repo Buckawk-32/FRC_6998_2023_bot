@@ -6,7 +6,8 @@ package frc.robot;
 
 import frc.robot.commands.IntakePivotCommand;
 import frc.robot.commands.SliderDriveCommand;
-import frc.robot.commands.SwerveDriveCommand;
+import frc.robot.commands.Drive.AutoBalanceCommand;
+import frc.robot.commands.Drive.SwerveDriveCommand;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.SliderSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
@@ -43,7 +44,7 @@ public class RobotContainer {
     private final static XboxController controller_operatorX = new XboxController(1);
 
     List<PathPlannerTrajectory> pathGroup = 
-      PathPlanner.loadPathGroup("New Path", new PathConstraints(4, 3));
+      PathPlanner.loadPathGroup("New New New Path", new PathConstraints(4, 3));
     
     HashMap<String, Command> eventMap = new HashMap<>();
 
@@ -68,8 +69,7 @@ public class RobotContainer {
         () -> controller_driveX.getRawAxis(XboxController.Axis.kLeftY.value),
         () -> controller_driveX.getRawAxis(XboxController.Axis.kLeftX.value),
         () -> controller_driveX.getRawAxis(XboxController.Axis.kRightX.value),
-        () -> controller_driveX.getLeftBumper()
-        ));
+        () -> controller_driveX.getLeftBumper()));
 
       intakeSubsystem.setDefaultCommand(new IntakePivotCommand(
         intakeSubsystem,

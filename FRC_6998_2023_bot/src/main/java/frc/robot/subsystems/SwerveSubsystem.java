@@ -25,9 +25,6 @@ public class SwerveSubsystem extends SubsystemBase {
     public SwerveModule[] mSwerveModules;
     public AHRS navX;
 
-    public static final double k_OFF_BALANCE_ANGLE_THRESHOLD_DEG = 10;
-    public static final double k_ON_BALANCE_ANGLE_THRESHOLD_DEG = 5;
-
     public SwerveSubsystem() {
         navX = new AHRS(SerialPort.Port.kMXP);
         navX.reset();
@@ -82,7 +79,7 @@ public class SwerveSubsystem extends SubsystemBase {
     public void setModuleStates(SwerveModuleState[] desiredStates) {
         SwerveDriveKinematics.desaturateWheelSpeeds(desiredStates, Constants.SWERVE_MAX_SPEED);
 
-        for(SwerveModule mod : mSwerveModules) {
+        for(SwerveModule mod : mSwerveModules) { 
             mod.setDesiredState(desiredStates[mod.moduleNumber], false);
         }
     }
@@ -117,6 +114,10 @@ public class SwerveSubsystem extends SubsystemBase {
 
     public Rotation2d getYaw() {
         return (Constants.NAVX_INVERTED) ? Rotation2d.fromDegrees(360 - navX.getYaw()) : Rotation2d.fromDegrees(navX.getYaw());
+    }
+
+    public void StopMotors() {
+        
     }
 
     public void resetModulesToAbsolute() {
