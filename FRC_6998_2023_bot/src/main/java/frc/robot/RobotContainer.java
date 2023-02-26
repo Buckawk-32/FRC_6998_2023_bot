@@ -14,6 +14,7 @@ import frc.robot.subsystems.SwerveSubsystem;
 import java.util.HashMap;
 import java.util.List;
 
+import com.kauailabs.navx.frc.AHRS;
 import com.pathplanner.lib.PathConstraints;
 import com.pathplanner.lib.PathPlanner;
 import com.pathplanner.lib.PathPlannerTrajectory;
@@ -43,10 +44,22 @@ public class RobotContainer {
 
     private final static XboxController controller_operatorX = new XboxController(1);
 
+    private final static AHRS navX = new AHRS();
+
     List<PathPlannerTrajectory> pathGroup = 
       PathPlanner.loadPathGroup("New New New Path", new PathConstraints(4, 3));
     
-    HashMap<String, Command> eventMap = new HashMap<>();
+    HashMap<String, Command> eventMap = new HashMap<>(){{
+      put("AutoBalanceCommand", new AutoBalanceCommand(
+        swerveSubsystem,
+        Constants.SWERVE_AUTO_XY_KP,
+        Constants.SWERVE_AUTO_XY_KI,
+        Constants.SWERVE_AUTO_XY_KD,
+        navX,
+        () -> controller_driveX.getRightBumper()
+        ));
+    }};
+    
 
     SwerveAutoBuilder autobuilder = new SwerveAutoBuilder(
       swerveSubsystem::getPose,
@@ -66,26 +79,11 @@ public class RobotContainer {
     {
       swerveSubsystem.setDefaultCommand(new SwerveDriveCommand(
         swerveSubsystem,
-        () -> controller_driveX.getRawAxis(XboxController.Axis.kLeftY.value),
-        () -> controller_driveX.getRawAxis(XboxController.Axis.kLeftX.value),
-        () -> controller_driveX.getRawAxis(XboxController.Axis.kRightX.value),
-        () -> controller_driveX.getLeftBumper()));
-
-      intakeSubsystem.setDefaultCommand(new IntakePivotCommand(
-        intakeSubsystem,
-        () -> controller_operatorX.getRawAxis(XboxController.Axis.kLeftTrigger.value),
-        () -> controller_operatorX.getRawAxis(XboxController.Axis.kRightTrigger.value),
-        () -> controller_operatorX.getRawButton(XboxController.Button.kA.value),
-        () -> controller_operatorX.getRawButton(XboxController.Button.kB.value),
-        () -> controller_operatorX.getRawButton(XboxController.Button.kX.value),
-        () -> controller_operatorX.getRawAxis(XboxController.Axis.kLeftY.value)
-        ));
-
-      sliderSubsystem.setDefaultCommand(new SliderDriveCommand(
-        sliderSubsystem,
-        () -> controller_operatorX.getRawAxis(XboxController.Axis.kRightX.value)        
-        ));
-
+        () -> controller_driveX.getLeftY(),
+        () -> controller_driveX.getLeftX(),
+        () -> controller_driveX.getRightX(),
+        () -> controller_driveX.getLeftBumper()
+      ));
         configureBindings();
     }
 
@@ -96,5 +94,6 @@ public class RobotContainer {
 
     public Command getAutonomousCommand() {
       return fullAuto;
-    }
-} 
+    } 
+
+}

@@ -16,8 +16,6 @@ public class AutoBalanceCommand extends CommandBase {
 
     private final PIDController AutoBalancePID;
 
-    BooleanSupplier StartAutoBalance;
-
     BooleanSupplier ESTOP;
 
     private AHRS navx;
@@ -26,12 +24,11 @@ public class AutoBalanceCommand extends CommandBase {
 
     private double CorrectPitch;
 
-    public AutoBalanceCommand(SwerveSubsystem swerveSubsystem, double kp, double ki, double kd, BooleanSupplier StartAutoBalance, AHRS navx, BooleanSupplier ESTOP) {
+    public AutoBalanceCommand(SwerveSubsystem swerveSubsystem, double kp, double ki, double kd, AHRS navx, BooleanSupplier ESTOP) {
         this.swerveSubsystem = swerveSubsystem;
         addRequirements(swerveSubsystem);
 
         AutoBalancePID = new PIDController(kp, ki, kd);
-        this.StartAutoBalance = StartAutoBalance;
         this.ESTOP = ESTOP;
     }
 
@@ -44,17 +41,16 @@ public class AutoBalanceCommand extends CommandBase {
 
     @Override
     public void execute()
-    {
-        boolean GetStartAutoBalance = StartAutoBalance.getAsBoolean();
+    {   
         boolean ESTOP_Start = ESTOP.getAsBoolean();
-
-        if (GetStartAutoBalance == true) {
-            currentAngle = navx.getPitch();
+        
+        currentAngle = navx.getPitch();
             
-            CorrectPitch = AutoBalancePID.calculate(currentAngle, Constants.BALANCE_DEG_GOAL);
+        CorrectPitch = AutoBalancePID.calculate(currentAngle, Constants.BALANCE_DEG_GOAL);
 
-            swerveSubsystem.drive(new Translation2d(CorrectPitch, 0), 0, true, true);
-        } else if (ESTOP_Start == true) {
+        swerveSubsystem.drive(new Translation2d(CorrectPitch, 0), 0, true, true);
+
+        if (ESTOP_Start == true) {
             swerveSubsystem.StopMotors();
         }
     }

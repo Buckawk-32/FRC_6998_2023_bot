@@ -7,7 +7,7 @@ public class Robotmap {
     public static final PneumaticsModuleType PNEUMATICS_MODULE_TYPE = PneumaticsModuleType.REVPH;
 
     public static final int SWERVE_LEFTFRONT_DRIVEMOTOR = 1;
-    public static final int SWERVE_LEFTFRONT_ANGLEMOTOR = 2;
+    public static final int SWERVE_LEFTFRONT_ANGLEMOTOR = 1;
     public static final int SWERVE_LEFTFRONT_CANCODER = 1;
 
     public static final int SWERVE_LEFTREAR_DRIVEMOTOR = 3;
@@ -24,14 +24,8 @@ public class Robotmap {
 
 // need to change the ids below
 
-    public static final int MOTOR_INTAKE_CONE_ID = 0;
-    public static final int MOTOR_INTAKE_BOX_ID = 0;
+    public static final int INTAKE_ROTATION_MOTOR_ID = 0;
 
-    public static final int MOTOR_INTAKE_ROTATION_1_ID = 0;
-    public static final int MOTOR_INTAKE_ROTATION_2_ID = 0;
-
-    public static final int MOTOR_INTAKE_POSITION_1_ID = 0;
-    public static final int MOTOR_INTAKE_POSITION_2_ID = 0;
-
-    public static final int MOTOR_SLIDER_LENGTH_ID = 0;
+    public static final int INTAKE_GRIPPER_SOLENOID_1_CHANNEL = 0;
+    public static final int INTAKE_GRIPPER_SOLENOID_2_CHANNEL = 0;
 }
