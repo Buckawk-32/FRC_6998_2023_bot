@@ -63,4 +63,4 @@ public class AutoBalanceCommand extends CommandBase {
     public boolean isFinished() {
         return AutoBalancePID.atSetpoint();
     }
- }
+}
