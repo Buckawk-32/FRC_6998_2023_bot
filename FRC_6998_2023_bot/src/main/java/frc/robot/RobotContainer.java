@@ -21,7 +21,6 @@ import com.pathplanner.lib.PathPlannerTrajectory;
 import com.pathplanner.lib.auto.PIDConstants;
 import com.pathplanner.lib.auto.SwerveAutoBuilder;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
@@ -44,6 +43,8 @@ public class RobotContainer {
     private final static XboxController controller_operatorX = new XboxController(1);
 
     private final static AHRS navX = new AHRS();
+
+    // * We need to mkae more pathplanner and auto stuff
 
     List<PathPlannerTrajectory> pathGroup = 
       PathPlanner.loadPathGroup("New New New Path", new PathConstraints(4, 3));
@@ -97,12 +98,14 @@ public class RobotContainer {
         sliderSubsytem,
         () -> controller_operatorX.getYButton(),
         () -> controller_operatorX.getAButton(),
-        () -> controller_operatorX.getLeftBumper()
+        () -> controller_operatorX.getLeftBumper() //! need to change out the left bumper for POV down
       ));      
-      
+
         configureBindings();
     }
 
+    // ? Idk wheter this works
+    
     private void configureBindings() {
       new JoystickButton(controller_driveX, XboxController.Button.kLeftBumper.value)
         .onTrue(new InstantCommand(swerveSubsystem::zeroGyro));
