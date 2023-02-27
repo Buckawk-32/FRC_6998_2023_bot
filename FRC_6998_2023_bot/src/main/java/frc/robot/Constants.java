@@ -88,93 +88,33 @@ public final class Constants {
 
 // --------------------------------------------------------------------
 
-// I also need to test these vaules
- 
-  public static final boolean INTAKE_MOTOR_CONE_INVERTED = false;
-  public static final boolean INTAKE_MOTOR_BOX_INVERTED = false;
+  public static final int INTAKE_ROTATION_MOTOR_CURRENTLIMIT = 0;
+  public static final double INTAKE_ROTATION_MOTOR_VOLTAGE_COMPENSATION = 0.0; 
 
-  public static final IdleMode INTAKE_MOTOR_CONE_IDLEMODE = IdleMode.kBrake;
-  public static final IdleMode INTAKE_MOTOR_BOX_IDLEMODE = IdleMode.kCoast;
-  public static final IdleMode INTAKE_MOTOR_ROTATION_IDLEMODE = IdleMode.kBrake;
-  public static final IdleMode INTAKE_MOTOR_POSITION_IDLEMODE = IdleMode.kBrake;
+  public static final IdleMode INTAKE_ROTATION_MOTOR_IDLEMODE = IdleMode.kBrake;
 
-// --------------------------------------------------------------------
+  public static final double INTAKE_ROTATION_MOTOR_KP = 0.0;
+  public static final double INTAKE_ROTATION_MOTOR_KI = 0.0;
+  public static final double INTAKE_ROTATION_MOTOR_KD = 0.0;
+  public static final double INTAKE_ROTATION_MOTOR_KF = 0.0;
 
-  public static final double INTAKE_MOTOR_CONE_KP = 0.0;
-  public static final double INTAKE_MOTOR_CONE_KI = 0.0;
-  public static final double INTAKE_MOTOR_CONE_KD = 0.0;
-  public static final double INTAKE_MOTOR_CONE_KF = 0.0;
-
-  public static final double INTAKE_MOTOR_CONE_RPM = 0.0;
+  public static final double INTAKE_JOYSTICK_DEADBAND = 0.05;
 
 // --------------------------------------------------------------------
 
-  public static final double INTAKE_MOTOR_BOX_KP = 0.0;
-  public static final double INTAKE_MOTOR_BOX_KI = 0.0;
-  public static final double INTAKE_MOTOR_BOX_KD = 0.0;
-  public static final double INTAKE_MOTOR_BOX_KF = 0.0;
+  public static final int SLIDER_LENTGH_MOTOR_CURRENTLIMIT = 0;
+  public static final double SLIDER_LENTGH_MOTOR_VOLTAGE_COMPENSATION = 0.0;
 
-  public static final double INTAKE_MOTOR_BOX_RPM = 0.0;
+  public static final IdleMode SLIDER_LENGTH_IDLEMODE = IdleMode.kBrake;
 
-// --------------------------------------------------------------------
+  public static final double SLIDER_LENGTH_KP = 0.0;
+  public static final double SLIDER_LENGTH_KI = 0.0;
+  public static final double SLIDER_LENGTH_KD = 0.0;
+  public static final double SLIDER_LENGTH_KF = 0.0;
 
-  public static final double INTAKE_MOTOR_ROTATION_1_KP = 0.0;
-  public static final double INTAKE_MOTOR_ROTATION_1_KI = 0.0;
-  public static final double INTAKE_MOTOR_ROTATION_1_KD = 0.0;
-  public static final double INTAKE_MOTOR_ROTATION_1_KF = 0.0;
+  public static final double SLIDER_MID_NODE_LENGTH = 0.0;
+  public static final double SLIDER_HIGH_NODE_LENGTH = 0.0;
 
-  public static final double INTAKE_MOTOR_ROTATION_2_KP = 0.0;
-  public static final double INTAKE_MOTOR_ROTATION_2_KI = 0.0;
-  public static final double INTAKE_MOTOR_ROTATION_2_KD = 0.0;
-  public static final double INTAKE_MOTOR_ROTATION_2_KF = 0.0;
-
-  public static final double INTAKE_ROT_DEADBAND = 0.05;
-
-// --------------------------------------------------------------------
-
-  public static final double INTAKE_MOTOR_POSITION_1_KP = 0.0;
-  public static final double INTAKE_MOTOR_POSITION_1_KI = 0.0;
-  public static final double INTAKE_MOTOR_POSITION_1_KD = 0.0;
-  public static final double INTAKE_MOTOR_POSITION_1_KF = 0.0;
-
-  public static final double INTAKE_MOTOR_POSITION_2_KP = 0.0;
-  public static final double INTAKE_MOTOR_POSITION_2_KI = 0.0;
-  public static final double INTAKE_MOTOR_POSITION_2_KD = 0.0;
-  public static final double INTAKE_MOTOR_POSITION_2_KF = 0.0;
-
-  public static final double INTAKE_POS_DEADBAND = 0.05;
-
-// --------------------------------------------------------------------
-
-  public static final double INTAKE_MOTOR_CONE_VOLTAGE_COMPENSATION = 12.0;
-  public static final double INTAKE_MOTOR_BOX_VOLTAGE_COMPENSATION = 12.0;
-  public static final double INTAKE_MOTOR_ROTATION_1_VOLTAGE_COMPENSATION = 12.0;
-  public static final double INTAKE_MOTOR_ROTATION_2_VOLTAGE_COMPENSATION = 12.0;
-  public static final double INTAKE_MOTOR_POSITION_1_VOLTAGE_COMPENSATION = 12.0;
-  public static final double INTAKE_MOTOR_POSITION_2_VOLTAGE_COMPENSATION = 12.0;
-
-  public static final int INTAKE_MOTOR_CONE_CURRENTLIMIT = 0;
-  public static final int INTAKE_MOTOR_BOX_CURRENTLIMIT = 0;
-  public static final int INTAKE_MOTOR_ROTATION_1_CURRENTLIMIT = 0;
-  public static final int INTAKE_MOTOR_ROTATION_2_CURRENTLIMIT = 0;
-  public static final int INTAKE_MOTOR_POSITION_1_CURRENTLIMIT = 0;
-  public static final int INTAKE_MOTOR_POSITION_2_CURRENTLIMIT = 0;
-
-// --------------------------------------------------------------------
-
-  public static final IdleMode SLIDER_MOTOR_LENGTH_IDLEMODE = IdleMode.kBrake;
-
-  public static final double SLIDER_MOTOR_LENGTH_KP = 0.0;
-  public static final double SLIDER_MOTOR_LENGTH_KI = 0.0;
-  public static final double SLIDER_MOTOR_LENGTH_KD = 0.0;
-  public static final double SLIDER_MOTOR_LENGTH_KF = 0.0;
-
-  public static final double SLIDER_MOTOR_LENGTH_VOLTAGE_COMPENSATION = 12.0;
-  public static final int SLIDER_MOTOR_LENGTH_CURRENTLIMIT = 0;
-
-  public static final double SLIDER_DEADBAND = 0.05;
-
-// --------------------------------------------------------------------
 }
   
 

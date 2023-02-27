@@ -28,4 +28,7 @@ public class Robotmap {
 
     public static final int INTAKE_GRIPPER_SOLENOID_1_CHANNEL = 0;
     public static final int INTAKE_GRIPPER_SOLENOID_2_CHANNEL = 0;
+
+    public static final int SLIDER_LENTGH_MOTOR_1_ID = 0;
+    public static final int SLIDER_LENTGH_MOTOR_2_ID = 0;
 }

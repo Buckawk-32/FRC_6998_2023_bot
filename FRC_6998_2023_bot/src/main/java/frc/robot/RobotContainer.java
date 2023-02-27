@@ -4,11 +4,11 @@
 
 package frc.robot;
 
-import frc.robot.commands.IntakePivotCommand;
-import frc.robot.commands.SliderDriveCommand;
 import frc.robot.commands.Drive.AutoBalanceCommand;
 import frc.robot.commands.Drive.SwerveDriveCommand;
-import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.commands.Intake.IntakeRotateCommand;
+import frc.robot.commands.Slide.SliderExtendCommand;
+import frc.robot.subsystems.IntakeSubsytem;
 import frc.robot.subsystems.SliderSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
 import java.util.HashMap;
@@ -21,6 +21,7 @@ import com.pathplanner.lib.PathPlannerTrajectory;
 import com.pathplanner.lib.auto.PIDConstants;
 import com.pathplanner.lib.auto.SwerveAutoBuilder;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
@@ -35,10 +36,8 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public class RobotContainer {
 
     private final SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
-
-    private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
-
-    private final SliderSubsystem sliderSubsystem = new SliderSubsystem();
+    private final IntakeSubsytem intakeSubsytem = new IntakeSubsytem();
+    private final SliderSubsystem sliderSubsytem = new SliderSubsystem();
 
     private final static XboxController controller_driveX = new XboxController(0);
 
@@ -75,6 +74,10 @@ public class RobotContainer {
 
     private final Command fullAuto = autobuilder.fullAuto(pathGroup);
 
+    /**
+     * todo: have to change out left bumper for POV down in Slider, but idk how, without POV angle
+     */
+
     public RobotContainer()
     {
       swerveSubsystem.setDefaultCommand(new SwerveDriveCommand(
@@ -84,12 +87,31 @@ public class RobotContainer {
         () -> controller_driveX.getRightX(),
         () -> controller_driveX.getLeftBumper()
       ));
+
+      intakeSubsytem.setDefaultCommand(new IntakeRotateCommand(
+        intakeSubsytem, 
+        () -> controller_operatorX.getLeftY()
+      ));
+
+      sliderSubsytem.setDefaultCommand(new SliderExtendCommand(
+        sliderSubsytem,
+        () -> controller_operatorX.getYButton(),
+        () -> controller_operatorX.getAButton(),
+        () -> controller_operatorX.getLeftBumper()
+      ));      
+      
         configureBindings();
     }
 
     private void configureBindings() {
       new JoystickButton(controller_driveX, XboxController.Button.kLeftBumper.value)
         .onTrue(new InstantCommand(swerveSubsystem::zeroGyro));
+
+      new JoystickButton(controller_operatorX, XboxController.Button.kX.value)
+        .onTrue(new InstantCommand(intakeSubsytem::INTAKE_GRIPPER_GRAB));
+
+      new JoystickButton(controller_operatorX, XboxController.Button.kB.value)
+        .onTrue(new InstantCommand(intakeSubsytem::INTAKE_GRIPPER_RELEASE));
     }
 
     public Command getAutonomousCommand() {
