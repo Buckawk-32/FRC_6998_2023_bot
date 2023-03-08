@@ -44,10 +44,10 @@ public class RobotContainer {
 
     private final static AHRS navX = new AHRS();
 
-    // * We need to mkae more pathplanner and auto stuff
+    // * We need to make more pathplanner and auto stuff
 
     List<PathPlannerTrajectory> pathGroup = 
-      PathPlanner.loadPathGroup("New New New Path", new PathConstraints(4, 3));
+      PathPlanner.loadPathGroup("New Path", new PathConstraints(4, 3));
     
     HashMap<String, Command> eventMap = new HashMap<>(){{
       put("AutoBalanceCommand", new AutoBalanceCommand(
@@ -60,7 +60,6 @@ public class RobotContainer {
         ));
     }};
     
-
     SwerveAutoBuilder autobuilder = new SwerveAutoBuilder(
       swerveSubsystem::getPose,
       swerveSubsystem::resetOdometry,
